@@ -67,6 +67,12 @@ namespace Drinks_Self_Learn
             services.AddSession();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,7 +84,7 @@ namespace Drinks_Self_Learn
             app.UseSession();
             app.UseAuthentication();
             app.UseCookiePolicy();
-            //app.UseAuthorization();
+            app.UseAuthorization();
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {

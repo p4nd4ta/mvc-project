@@ -51,7 +51,7 @@ namespace Drinks_Self_Learn.Controllers
                     return Redirect(loginViewModel.ReturnUrl);
                 }
             }
-            ModelState.AddModelError("", "Username/Password not found !");
+            ModelState.AddModelError("UserName", "Username/Password not found !");
             return View(loginViewModel);
         }
 
@@ -77,6 +77,8 @@ namespace Drinks_Self_Learn.Controllers
             }
             return View(loginViewModel);
         }
+
+
         [HttpPost]
         [Authorize]
 
