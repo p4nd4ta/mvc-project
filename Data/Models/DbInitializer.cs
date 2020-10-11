@@ -26,231 +26,243 @@ namespace DrinkAndGo.Data
                 (
                     new Drink
                     {
-                        Name = "Beer",
-                        Price = 7.95M,
-                        ShortDescription = "The most widely consumed alcohol",
-                        LongDescription = "Beer is the world's oldest[1][2][3] and most widely consumed[4] alcoholic drink; it is the third most popular drink overall, after water and tea.[5] The production of beer is called brewing, which involves the fermentation of starches, mainly derived from cereal grains—most commonly malted barley, although wheat, maize (corn), and rice are widely used.[6] Most beer is flavoured with hops, which add bitterness and act as a natural preservative, though other flavourings such as herbs or fruit may occasionally be included. The fermentation process causes a natural carbonation effect, although this is often removed during processing, and replaced with forced carbonation.[7] Some of humanity's earliest known writings refer to the production and distribution of beer: the Code of Hammurabi included laws regulating beer and beer parlours.",
+                        Name = "Shumensko",
+                        Price = 2.49M,
+                        ShortDescription = "„Шуменско“ е най-старата и стратегическа марка в портфолиото на „Карлсберг България“ АД. ",
+                        LongDescription = "Шуменско е търговска марка българска бира, тип лагер, която се произвежда от пивоварната „Карлсберг България“АД, гр. Шумен, собственост на международната пивоварна компания „Карлсберг Груп“. ",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/beerL_2.jpg",
+                        ImageUrl = "https://i.imgur.com/45f9TuH.jpg",
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "http://imgh.us/beerS_1.jpeg"
+                        ImageThumbnailUrl = "https://i.imgur.com/45f9TuH.jpg"
                     },
                     new Drink
                     {
-                        Name = "Rum & Coke",
-                        Price = 12.95M,
-                        ShortDescription = "Cocktail made of cola, lime and rum.",
-                        LongDescription = "The world's second most popular drink was born in a collision between the United States and Spain. It happened during the Spanish-American War at the turn of the century when Teddy Roosevelt, the Rough Riders, and Americans in large numbers arrived in Cuba. One afternoon, a group of off-duty soldiers from the U.S. Signal Corps were gathered in a bar in Old Havana. Fausto Rodriguez, a young messenger, later recalled that Captain Russell came in and ordered Bacardi (Gold) rum and Coca-Cola on ice with a wedge of lime. The captain drank the concoction with such pleasure that it sparked the interest of the soldiers around him. They had the bartender prepare a round of the captain's drink for them. The Bacardi rum and Coke was an instant hit. As it does to this day, the drink united the crowd in a spirit of fun and good fellowship. When they ordered another round, one soldier suggested that they toast ¡Por Cuba Libre! in celebration of the newly freed Cuba.",
+                        Name = "Johnnie Walker Black Label, 12 Year Old",
+                        Price = 53.95M,
+                        ShortDescription = "Johnnie Walker Black Label is a perfectly balanced whisky crafted using single malt and grain whiskies drawn from the four corners of Scotland.",
+                        LongDescription = "Johnnie Walker Black Label is a perfectly balanced whisky crafted using single malt and grain whiskies drawn from the four corners of Scotland. It features whiskies from more than 29 distilleries - all aged for a minimum of 12 years - and has notes of vanilla, toffee and dark fruits before a uniquely smoky finish. ",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/rumCokeL.jpg",
+                        ImageUrl = "https://i.imgur.com/9nbFw5T.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/rumAndCokeS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/9nbFw5T.jpg"
                     },
                     new Drink
                     {
-                        Name = "Tequila ",
-                        Price = 12.95M,
-                        ShortDescription = "Beverage made from the blue agave plant.",
-                        LongDescription = "Tequila (Spanish About this sound [teˈkila] (help·info)) is a regionally specific name for a distilled beverage made from the blue agave plant, primarily in the area surrounding the city of Tequila, 65 km (40 mi) northwest of Guadalajara, and in the highlands (Los Altos) of the central western Mexican state of Jalisco. Although tequila is similar to mezcal, modern tequila differs somewhat in the method of its production, in the use of only blue agave plants, as well as in its regional specificity. Tequila is commonly served neat in Mexico and as a shot with salt and lime across the rest of the world.The red volcanic soil in the surrounding region is particularly well suited to the growing of the blue agave, and more than 300 million of the plants are harvested there each year.[1] Agave tequila grows differently depending on the region. Blue agaves grown in the highlands Los Altos region are larger in size and sweeter in aroma and taste. Agaves harvested in the lowlands, on the other hand, have a more herbaceous fragrance and flavor.",
+                        Name = "Burgas 63",
+                        Price = 20.95M,
+                        ShortDescription = "Burgas 63 is undoubtedly one of the best Bulgarian rakias.",
+                        LongDescription = "This barrel aged gem has a subtle Muscat aroma and oak notes remnant from the aging process with a soft and elegant taste. The rakia is produced by the distillation of wine made from Muscat Otonnel grape using a classic technology combined with a traditional aging process of small batches in selected oak barrels for more than three years.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/tequilaL.jpg",
+                        ImageUrl = "https://i.imgur.com/4PMArR7.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/tequilaS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/4PMArR7.jpg"
                     },
                     new Drink
                     {
-                        Name = "Wine ",
-                        Price = 16.75M,
-                        ShortDescription = "A very elegant alcoholic drink",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Jack Daniels, Old No. 7",
+                        Price = 51.45M,
+                        ShortDescription = "Mellowed drop by drop through 10-feet of sugar maple charcoal, then matured in handcrafted barrels of our own making.",
+                        LongDescription = "Mellowed drop by drop through 10-feet of sugar maple charcoal, then matured in handcrafted barrels of our own making. And our Tennessee Whiskey doesn’t follow a calendar. It’s only ready when our tasters say it is. We judge it by the way it looks. By its aroma. And of course, by the way it tastes. It’s how Jack Daniel himself did it over a century ago. And how we still do it today.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/wineL.jpg",
+                        ImageUrl = "https://i.imgur.com/fB973vf.png",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/wineS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/fB973vf.png"
                     },
                     new Drink
                     {
-                        Name = "Margarita",
-                        Price = 17.95M,
-                        ShortDescription = "A cocktail with sec, tequila and lime",
+                        Name = "Rakia from the Basement",
+                        Price = 10.00M,
+                        ShortDescription = "Best drink ever, developer's favourite",
                         Category = Categories["Alcoholic"],
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-                        ImageUrl = "http://imgh.us/margaritaL.jpg",
+                        LongDescription = "If cognac and whiskey are both kings of all alcohols, then Rakia is the rightful queen. Interestingly enough, given the incredible popularity of this drink in Southeast Europe, it’s pretty much unknown outside of Balkan Peninsula.",
+                        ImageUrl = "https://i.imgur.com/BROtmDb.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/margaritaS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/BROtmDb.jpg"
                     },
                     new Drink
                     {
-                        Name = "Whiskey with Ice",
-                        Price = 15.95M,
-                        ShortDescription = "The best way to taste whiskey",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Pirinsko Svetlo",
+                        Price = 2.35M,
+                        ShortDescription = "Pirinsko Svetlo is an extremely fresh and beer beer of the 'Pilsener' type with 4.4% alcohol content",
+                        LongDescription = "Pirinsko Svetlo is an extremely fresh and beer beer of the 'Pilsener' type with 4.4% alcohol content. It has all the traditional merits of light beer: a well-balanced bitter taste, hop aroma and amber color, which make it an excellent choice for refreshing and quenching thirst at every table and in every company.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/whiskyIceL.jpg",
+                        ImageUrl = "https://i.imgur.com/ZY3NE1v.jpg",
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/whiskeyS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/ZY3NE1v.jpg"
                     },
                     new Drink
                     {
-                        Name = "Jägermeister",
-                        Price = 15.95M,
-                        ShortDescription = "A German digestif made with 56 herbs",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Johnhie Walker Red Label",
+                        Price = 23.95M,
+                        ShortDescription = "Crafted from the four corners of Scotland, it crackles with spice and is bursting with vibrant, smoky flavours",
+                        LongDescription = "Johnnie Walker Red Label is our Pioneer Blend, the versatile one that has introduced our whisky to the world. Crafted from the four corners of Scotland, it crackles with spice and is bursting with vibrant, smoky flavours – followed by a mellow bed of vanilla, a fresh zestiness and the Johnnie Walker signature of a long, lingering, smoky finish.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/jagermeisterL.jpg",
+                        ImageUrl = "https://i.imgur.com/ogkkra2.jpg",
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/jagermeisterS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/ogkkra2.jpg"
                     },
                     new Drink
                     {
-                        Name = "Champagne",
-                        Price = 15.95M,
-                        ShortDescription = "That is how sparkling wine can be called",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Russian Standard - Vodka",
+                        Price = 18.95M,
+                        ShortDescription = "A vodka that is the result of a complex convergence of science and nature, craft and technology, history and revolution.",
+                        LongDescription = "The incredible. It’s not just an adjective.It’s an action… a process… an evolution … like the creation of our ultra - clean, smooth and delicious Russian Standard Vodka. A vodka that is the result of a complex convergence of science and nature, craft and technology, history and revolution. ",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/champagneL.jpg",
+                        ImageUrl = "https://i.imgur.com/YTRIgI7.jpg",
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/champagneS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/YTRIgI7.jpg"
                     },
                     new Drink
                     {
-                        Name = "Piña colada ",
-                        Price = 15.95M,
-                        ShortDescription = "A sweet cocktail made with rum.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Savoy Vodka ",
+                        Price = 10.15M,
+                        ShortDescription = "Vodka Savoy is crystal clear and is perfect as a base for original cocktails, as well as on the rocks.",
+                        LongDescription = "Vodka Savoy is classic style vodka produced from high-quality 100% grain alcohol derived from soft, bready wheat and pure water. The smooth, velvet taste of vodka Savoy is due to multiple filtration of the distillate through activated carbon filter.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/pinaColadaL.jpg",
+                        ImageUrl = "https://i.imgur.com/fNy6M8z.jpg",
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/pinaColadaS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/fNy6M8z.jpg"
                     },
                     new Drink
                     {
-                        Name = "White Russian",
-                        Price = 15.95M,
-                        ShortDescription = "A cocktail made with vodka ",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Smirnoff Vodka - Red 1L",
+                        Price = 24.95M,
+                        ShortDescription = "Smirnoff red label is Russian vodka, which is triple distilled to leave only pure ethyl alcohol. ",
+                        LongDescription = "Smirnoff red label is Russian vodka, which is triple distilled to leave only pure ethyl alcohol. The vodka was then filtered ten times through charcoal from birch for eight hours. This process is due to the lack of taste, smell and aroma of Smirnoff 21, which makes it the best vodka in the world, according to connoisseurs of this traditional northern European drink.",
                         Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/whiteRussianL.jpg",
+                        ImageUrl = "https://i.imgur.com/iHPn7DO.jpg",
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/whiteRussianS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/iHPn7DO.jpg"
                     },
                     new Drink
                     {
-                        Name = "Long Island Iced Tea",
-                        Price = 15.95M,
-                        ShortDescription = "Aa mixed drink made with tequila.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-                        Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/longTeaL.jpg",
-                        InStock = false,
-                        IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/islandTeaS.jpg"
-                    },
-                    new Drink
-                    {
-                        Name = "Vodka",
-                        Price = 15.95M,
-                        ShortDescription = "A distilled beverage with water and ethanol.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-                        Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/vodkaL.jpg",
-                        InStock = false,
-                        IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/vodkaS.jpg"
-                    },
-                    new Drink
-                    {
-                        Name = "Gin and tonic",
-                        Price = 15.95M,
-                        ShortDescription = "Made with gin and tonic water poured over ice.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-                        Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/ginTonicL.jpg",
-                        InStock = false,
-                        IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/ginTonicS.jpg"
-                    },
-                    new Drink
-                    {
-                        Name = "Cosmopolitan",
-                        Price = 15.95M,
-                        ShortDescription = "Made with vodka, triple sec, cranberry juice.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-                        Category = Categories["Alcoholic"],
-                        ImageUrl = "http://imgh.us/cosmopolitanL.jpg",
-                        InStock = false,
-                        IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/cosmopolitanS.jpg"
-                    },
-                    new Drink
-                    {
-                        Name = "Tea ",
-                        Price = 12.95M,
-                        ShortDescription = "Made by leaves of the tea plant in hot water.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Coca Cola",
+                        Price = 1.49M,
+                        ShortDescription = "Coca‑Cola Original Taste is the world’s favourite soft drink and has been enjoyed since 1886.",
+                        LongDescription = "Coca‑Cola Original Taste is the world’s favourite soft drink and has been enjoyed since 1886. You can find Coca‑Cola Original Taste in a variety of sizes to suit every lifestyle and occasion.",
                         Category = Categories["Non-alcoholic"],
-                        ImageUrl = "http://imgh.us/teaL.jpg",
+                        ImageUrl = "https://i.imgur.com/uWIQo1O.jpg",
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "http://imgh.us/teaS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/uWIQo1O.jpg"
                     },
                     new Drink
                     {
-                        Name = "Water ",
-                        Price = 12.95M,
-                        ShortDescription = " It makes up more than half of your body weight ",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Cappy Orange ",
+                        Price = 2.95M,
+                        ShortDescription = "Natural juice Cappy - orange.",
+                        LongDescription = "Natural juice Cappy - orange. 100 % fruit content of orange.Cappy offers high quality drinks and nectars that are made from fresh, carefully selected fruits ripened in the sun.",
                         Category = Categories["Non-alcoholic"],
-                        ImageUrl = "http://imgh.us/waterL.jpg",
+                        ImageUrl = "https://i.imgur.com/GZzRx4B.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/waterS_1.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/GZzRx4B.jpg"
                     },
                     new Drink
                     {
-                        Name = "Coffee ",
-                        Price = 12.95M,
-                        ShortDescription = " A beverage prepared from coffee beans",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Monster Energy",
+                        Price = 1.99M,
+                        ShortDescription = "The Original Monster Energy Tear into a can of the meanest energy drink on the planet, Monster Energy",
+                        LongDescription = "The Original Monster Energy. Tear into a can of the meanest energy drink on the planet, Monster Energy. It's the ideal combo of the right ingredients in the right proportion to deliver the big bad buzz that only Monster can. Monster packs a powerful punch but has a smooth easy drinking flavor. Athletes, musicians, anarchists, co-ed’s, road warriors, metal heads, geeks, hipsters, and bikers dig it- you will too. ",
                         Category = Categories["Non-alcoholic"],
-                        ImageUrl = "http://imgh.us/coffeeL.jpg",
+                        ImageUrl = "https://i.imgur.com/jZi6EH9.jpg",
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "http://imgh.us/coffeS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/jZi6EH9.jpg"
                     },
                     new Drink
                     {
-                        Name = "Kvass",
-                        Price = 12.95M,
-                        ShortDescription = "A very refreshing Russian beverage",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Hell Summer Cool Mangosteen Pomelo ",
+                        Price = 2.95M,
+                        ShortDescription = "The new limited series HELL Summer Cool Mangosteen Pomelo",
+                        LongDescription = "The new limited series HELL Summer Cool Mangosteen Pomelo promises a refreshing sip of the tropics. Its golden-orange packaging is like a sunset, this new HELL energy drink brings the flavors of Southeast Asia with the sweetness of the mangosteen, the fruit of the gods, and the fresh tartness of the pomelo. ",
                         Category = Categories["Non-alcoholic"],
-                        ImageUrl = "http://imgh.us/kvassL.jpg",
+                        ImageUrl = "https://i.imgur.com/4OV9OLD.png",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/kvassS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/4OV9OLD.png"
                     },
                     new Drink
                     {
-                        Name = "Juice ",
-                        Price = 12.95M,
-                        ShortDescription = "Naturally contained in fruit or vegetable tissue.",
-                        LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                        Name = "Hell Summer Cool Black Cherry",
+                        Price = 2.95M,
+                        ShortDescription = "Sweet, crisp, and juicy…If you love the taste of black cherries, be sure to try HELL Summer Cool Black Cherry. ",
+                        LongDescription = "The new limited series HELL in an attractive purple can condenses the aromas of sunny summer days into a cold refreshing drink to energize you on those hot summer days. Great quality and a 32 mg/100 ml caffeine content ensure that you have the HELL experience you know and love.",
                         Category = Categories["Non-alcoholic"],
-                        ImageUrl = "http://imgh.us/juiceL.jpg",
+                        ImageUrl = "https://i.imgur.com/C7QBwha.png",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/juiceS.jpg"
+                        ImageThumbnailUrl = "https://i.imgur.com/C7QBwha.png"
+                    },
+                    new Drink
+                    {
+                        Name = "Hell Classic Plus",
+                        Price = 2.95M,
+                        ShortDescription = "We added 500 mg vitamin C, fortified with vitamin D, to HELL Classic.",
+                        LongDescription = "We added 500 mg vitamin C, fortified with vitamin D, to HELL Classic. Vitamin C and vitamin D contribute to the normal function of the immune system. Take care of each other!",
+                        Category = Categories["Non-alcoholic"],
+                        ImageUrl = "https://i.imgur.com/DlP3dFz.png",
+                        InStock = true,
+                        IsPreferredDrink = false,
+                        ImageThumbnailUrl = "https://i.imgur.com/DlP3dFz.png"
+                    },
+                    new Drink
+                    {
+                        Name = "Hell Summer Cool White Peach",
+                        Price = 2.95M,
+                        ShortDescription = "Indulge in temptation! Summer Cool White Peach has a light but unique taste that reminds of summer in some exotic place.",
+                        LongDescription = "The new limited series HELL in an attractive purple can condenses the aromas of sunny summer days into a cold refreshing drink to energize you on those hot summer days. Great quality and a 32 mg/100 ml caffeine content ensure that you have the HELL experience you know and love.",
+                        Category = Categories["Non-alcoholic"],
+                        ImageUrl = "https://i.imgur.com/ZUBwo3X.png",
+                        InStock = true,
+                        IsPreferredDrink = false,
+                        ImageThumbnailUrl = "https://i.imgur.com/ZUBwo3X.png"
+                    },
+                    new Drink
+                    {
+                        Name = "Hell Zero",
+                        Price = 2.95M,
+                        ShortDescription = "Taking into account the needs of the market, we have created a sugar-free product so our health-conscious consumers can also pick a favorite from our product portfolio",
+                        LongDescription = "HELL ZERO is made from excellent quality ingredients, without preservatives and with zero sugar, this means you can crack open a can without compromising your diet. Enjoy great ZERO flavor and let the 32 mg/100 ml caffeine content refresh you.",
+                        Category = Categories["Non-alcoholic"],
+                        ImageUrl = "https://i.imgur.com/QYZCBU9.png",
+                        InStock = true,
+                        IsPreferredDrink = false,
+                        ImageThumbnailUrl = "https://i.imgur.com/QYZCBU9.png"
+                    },
+                    new Drink
+                    {
+                        Name = "Hell Multi +",
+                        Price = 2.95M,
+                        ShortDescription = "Feeling exhausted or just feel like you could use a little pick-me-up? ",
+                        LongDescription = "Enjoy some refreshment from the winter member of our product family containing four kinds of B vitamins as well as vitamins A, C and E. Got a case of springtime fatigue or the winter blues? Why not crack open a HELL MULTI+? This product contains our usual 32 mg/100 ml of caffeine and is made without any preservatives.",
+                        Category = Categories["Non-alcoholic"],
+                        ImageUrl = "https://i.imgur.com/o7FvLzL.png",
+                        InStock = true,
+                        IsPreferredDrink = false,
+                        ImageThumbnailUrl = "https://i.imgur.com/o7FvLzL.png"
+                    },
+                    new Drink
+                    {
+                        Name = "Hell Ice Cool Cherry-Grape",
+                        Price = 2.95M,
+                        ShortDescription = "We variegated our favorite red grapes with a few cherries so that our latest product HELL Ice Cool can flatter you with its irresistible taste pleasure even on gloomy winter days.",
+                        LongDescription = "The new HELL Ice Cool is from a limited series and is launched with a modern look during the winter season. The usual HELL experience as always is guaranteed by the high quality and caffeine content of 32 mg / 100ml",
+                        Category = Categories["Non-alcoholic"],
+                        ImageUrl = "https://i.imgur.com/EG3hnyR.png",
+                        InStock = true,
+                        IsPreferredDrink = false,
+                        ImageThumbnailUrl = "https://i.imgur.com/EG3hnyR.png"
                     }
                 );
             }
