@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Drinks_Self_Learn.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Drinks_Self_Learn.Controllers
 {
@@ -73,6 +75,17 @@ namespace Drinks_Self_Learn.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    var errList = "";
+                    var error = result.Errors.ToList();
+
+                    foreach (var err in error)
+                    {
+                        errList += string.Join(" , ", err.Description);
+                    }
+                   this.ModelState.AddModelError("Password", errList);
                 }
             }
             return View(loginViewModel);

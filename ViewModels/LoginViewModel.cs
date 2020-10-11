@@ -8,6 +8,7 @@ namespace Drinks_Self_Learn.ViewModels
 {
     public class LoginViewModel
     {
+        [Key]
         [Required]
         [Display(Name="User Name")]
         public string UserName { get; set; }
