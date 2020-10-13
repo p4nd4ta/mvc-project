@@ -41,6 +41,7 @@ namespace Drinks_Self_Learn.Controllers
 
             if (ModelState.IsValid)
             {
+                order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
                 _orderRepository.CreateOrder(order);
                 _shoppingCart.ClearCart();
                 return RedirectToAction("CheckoutComplete");

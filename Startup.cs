@@ -88,7 +88,7 @@ namespace Drinks_Self_Learn
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("categoryFilter", "Drink/{action}/{category?}",defaults: new { Controller="Drink", action="List"});
+                routes.MapRoute("categoryFilter", "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
