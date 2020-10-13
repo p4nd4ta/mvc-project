@@ -29,6 +29,14 @@
                 </li>
                 @await Component.InvokeAsync("ShoppingCartSummary")
                 @await Html.PartialAsync("LoginPartial")
+
+
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">Web Administration Panel</a>
+                    </li>
+                }
             </ul>
             @*<form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

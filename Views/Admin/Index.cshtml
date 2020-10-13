@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Drinks_Self_Learn.Data.Models.Drink>
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<h1>Admin Panel</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-controller="AdminOrders" asp-action="Index">Edit Orders</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageThumbnailUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPreferredDrink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageThumbnailUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPreferredDrink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DrinkId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DrinkId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DrinkId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
