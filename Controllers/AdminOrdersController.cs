@@ -57,8 +57,8 @@ namespace Drinks_Self_Learn.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         
-        [Authorize(Roles = "Administrator")]
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderId,FirstName,LastName,AddressLine1,AddressLine2,ZipCode,State,Country,PhoneNumber,Email")] Order order)
         {
@@ -71,8 +71,8 @@ namespace Drinks_Self_Learn.Controllers
             return View(order);
         }
 
-        [Authorize(Roles = "Administrator")]
         // GET: OrdersAdmin/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,7 +87,6 @@ namespace Drinks_Self_Learn.Controllers
             }
             return View(order);
         }
-        [Authorize(Roles = "Administrator")]
         // POST: OrdersAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

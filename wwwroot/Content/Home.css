@@ -1,0 +1,20 @@
+﻿.home-flex {
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    width:90%;
+    margin:0 auto 5% auto;
+}
+
+#home-text {
+    margin: 5% 0;
+    text-align:center;
+}
+
+#hello, .nav-item#hello {
+    color: white;
+    font-weight: bold;
+}
+
+
+

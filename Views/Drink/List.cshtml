@@ -1,12 +1,13 @@
-﻿<div>
+﻿<div class="drink-introduction">
     <h2>All drinks are shown here</h2>
 </div>
 
-<h2>@Model.CurrentCategory</h2>
+<h2> <i class="fas fa-glass-cheers"></i> @Model.CurrentCategory</h2>
 
-@{ 
-    foreach (Drink drink in Model.Drinks)
-    {
-        @Html.Partial("DrinksSummary", drink)
-    }
-}
+<div id="drink-container">
+
+    @{ foreach (Drink drink in Model.Drinks)
+                    {
+        @Html.Partial("DrinksSummary", drink) } }
+
+</div>

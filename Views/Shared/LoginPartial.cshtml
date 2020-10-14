@@ -9,7 +9,7 @@
           method="post" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-            <li class="nav-item" id="user-id-name">Hello, @User.Identity.Name</li>
+            <li style="color:white" class="nav-item" id="user-id-name">Hello, @User.Identity.Name</li>
         </ul>
     </form>
 }
@@ -17,7 +17,7 @@ else
 {
 <ul class="navbar-nav justify-content-end">
     <li class="nav-item"><a class="nav-link" id="registerLink" asp-controller="Account" asp-action="Register"> Register </a></li>
-    <li class="nav-item" id="login-logout"><a class="nav-link" id="loginLink" asp-controller="Account" asp-action="Login"> Log in </a></li>
-    <li class="nav-item">Hello, Anonymous</li>
+    <li class="nav-item"><a class="nav-link" id="loginLink" asp-controller="Account" asp-action="Login"> Log in </a></li>
+    <li class="nav-item" id="hello">Hello, Anonymous</li>
 </ul>
 }

@@ -2,10 +2,9 @@
 
 @await Html.PartialAsync("Carousel")
 
-<h2>Prefered drinks of the week</h2>
-<h4>Clients preferences - just for you!</h4>
+<h2 id="home-text">Prefered drinks of the week</h2>
 
-<div class="row">
+<div class="home-flex">
     @foreach (var drink in Model.PreferredDrinks)
     {
         @Html.Partial("DrinksSummary",drink)
