@@ -83,9 +83,9 @@ namespace Drinks_Self_Learn.Controllers
 
                     foreach (var err in error)
                     {
-                        errList += string.Join(", ", err.Description);
+                        errList += "<li>" + err.Description + "</li>";
                     }
-                   this.ModelState.AddModelError("Password", errList);
+                    ViewBag.ErrorMessages = errList;
                 }
             }
             return View(loginViewModel);

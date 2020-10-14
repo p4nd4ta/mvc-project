@@ -19,6 +19,11 @@
                 <div class="col-md-10">
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
+                        <div class="text-danger">
+                                <ul>
+                                    @Html.Raw(ViewBag.ErrorMessages)
+                                </ul>
+                        </div>
                 </div>
             </div>
 
