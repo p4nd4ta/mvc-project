@@ -8,7 +8,7 @@
     <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
           method="post" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-door-open"></i> Log off</a></li>
             <li style="color:white" class="nav-item" id="user-id-name">Hello, @User.Identity.Name</li>
         </ul>
     </form>

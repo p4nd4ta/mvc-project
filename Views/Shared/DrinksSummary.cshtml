@@ -7,6 +7,15 @@
                     <h3 class="float-right">@Model.Price.ToString("c")</h3>
                     <h3><a>@Model.Name</a></h3>
                     <p>@Model.ShortDescription</p>
+
+                    @if (Model.InStock)
+                    {
+                        <p class="text-success">In stock</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Out of stock</p>
+                    }
                 </div>
             </div>
             

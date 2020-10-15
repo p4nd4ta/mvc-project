@@ -77,13 +77,13 @@
 	</dl>
 </div>
 <div>
-	<a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Edit" asp-route-id="@Model.OrderId" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a> <br />
+	<a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
 </div>
 
 <h5>Ordered Items:</h5>
 <table border="1">
-	<tr>
+	<tr class="bg-dark text-white">
 		<td>Drink Name</td>
 		<td>Price</td>
 		<td>Ammount</td>
@@ -91,23 +91,34 @@
 	</tr>
 	@foreach (Drink drink in drinks)
 	{
-		<tr>
-			<td>@drink.Name</td>
-			<td>@drink.Price</td>
+<tr>
+	<td>@drink.Name</td>
+	<td>@drink.Price</td>
 
 
-			@foreach (OrderDetail od in details)
-			{
-				@if (drink.DrinkId == od.DrinkId)
-				{
-					<td>@od.Amount</td>
-					@*<td>@od.Drink.Name</td>*@
-				}
-			}
-			
-			<td>@drink.InStock</td>
-		</tr>
+	@foreach (OrderDetail od in details)
+	{
+		@if (drink.DrinkId == od.DrinkId)
+		{
+			<td> x @od.Amount</td>
+		}
 	}
 
+
+	@if (drink.InStock)
+	{
+		<td class="bg-success text-white">@drink.InStock</td>
+	}
+	else
+	{
+		<td class="bg-danger text-white">@drink.InStock</td>
+	}
+</tr>
+	}
+	<tfoot>
+		<tr class="bg-dark text-white">
+			<td>Order Total:</td>
+			<td>@Model.OrderTotal</td>
+		</tr>
+	</tfoot>
 </table>
-	<strong>Order Total: @Model.OrderTotal</strong>

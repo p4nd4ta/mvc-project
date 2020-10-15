@@ -29,10 +29,11 @@
 
             <div class="form-group pull-right formPullRightButton">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-success " value="Register" />
+                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Register</button> 
                 </div>
             </div>
         </form>
+        Already have an account? <a asp-controller="Account" asp-action="Login">Login</a>
     </div>
 </div>
 @section Scripts {

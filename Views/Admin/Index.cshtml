@@ -7,8 +7,8 @@
 <h1>Admin Panel</h1>
 
 <p>
-    <a asp-action="Create">Add New Product</a>
-    <a asp-controller="AdminOrders" asp-action="Index">Edit Orders</a>
+    <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i> Add New Product</a>
+    <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
 </p>
 <table class="table">
     <thead>
@@ -63,9 +63,9 @@
                     @Html.DisplayFor(modelItem => item.Category.CategoryId)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.DrinkId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.DrinkId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.DrinkId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.DrinkId" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a> <br />
+                    <a asp-action="Details" asp-route-id="@item.DrinkId" class="btn btn-info"><i class="fas fa-info-circle"></i> Details</a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.DrinkId" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
                 </td>
             </tr>
         }
