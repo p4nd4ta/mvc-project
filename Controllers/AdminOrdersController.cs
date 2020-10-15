@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Drinks_Self_Learn.Data;
 using Drinks_Self_Learn.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Drinks_Self_Learn.Migrations;
+using System.Data;
 
 namespace Drinks_Self_Learn.Controllers
 {
@@ -24,6 +26,10 @@ namespace Drinks_Self_Learn.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
+            var order = _context.Orders
+                        .Include(s => s.OrderLines)
+                        .AsNoTracking();
+
             return View(await _context.Orders.ToListAsync());
         }
 
@@ -31,13 +37,27 @@ namespace Drinks_Self_Learn.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
+
+            var order = await _context.Orders.Include(s => s.OrderLines)
+                        .FirstOrDefaultAsync(m => m.OrderId == id);
+
+            var drinksList = new List<Drink>();
+            var detailsList = new List<OrderDetail>();
+
+            foreach (OrderDetail od in order.OrderLines)
+            {
+                drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId));
+                detailsList.Add(await _context.OrderDetails.FirstOrDefaultAsync(m => m.DrinkId== od.Drink.DrinkId));
+            }
+
+            ViewData["Drinks"] = drinksList;
+            ViewData["Details"] = detailsList;
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {
                 return NotFound();
