@@ -75,7 +75,6 @@
                 @Html.DisplayFor(modelItem => item.OrderPlaced)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a> <br />
                 <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info"><i class="fas fa-info-circle"></i> Details</a> <br />
                 <a asp-action="Delete" asp-route-id="@item.OrderId" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
             </td>

@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Drink</h4>
+    <h4>Drink ID: @Model.DrinkId</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -50,7 +50,7 @@
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.CategoryId)
+            @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
     </dl>
 </div>

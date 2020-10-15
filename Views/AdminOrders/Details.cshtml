@@ -11,7 +11,7 @@
 <h1>Details</h1>
 
 <div>
-	<h4>Order</h4>
+	<h4>Order ID: @Model.OrderId</h4>
 	<hr />
 	<dl class="row">
 		<dt class="col-sm-2">
@@ -76,14 +76,10 @@
 		</dd>
 	</dl>
 </div>
-<div>
-	<a asp-action="Edit" asp-route-id="@Model.OrderId" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a> <br />
-	<a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
-</div>
 
-<h5>Ordered Items:</h5>
+<h4>Ordered Items:</h4>
 <table border="1">
-	<tr class="bg-dark text-white">
+	<tr class="bg-dark text-white font-weight-bold">
 		<td>Drink Name</td>
 		<td>Price</td>
 		<td>Ammount</td>
@@ -116,9 +112,14 @@
 </tr>
 	}
 	<tfoot>
-		<tr class="bg-dark text-white">
+		<tr class="bg-dark text-white font-weight-bold">
 			<td>Order Total:</td>
 			<td>@Model.OrderTotal</td>
 		</tr>
 	</tfoot>
 </table>
+
+<br /><br />
+<div>
+	<a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
+</div>
