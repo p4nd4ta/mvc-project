@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Drinks_Self_Learn.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
@@ -65,12 +66,13 @@ namespace Drinks_Self_Learn.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginViewModel.UserName };
-                var result = await _userManager.CreateAsync(user, loginViewModel.Password);
+                var user = new IdentityUser() { UserName = registerViewModel.UserName };
+                var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+                var email = await _userManager.SetEmailAsync(user, registerViewModel.Email);
 
                 if (result.Succeeded)
                 {
@@ -88,7 +90,7 @@ namespace Drinks_Self_Learn.Controllers
                     ViewBag.ErrorMessages = errList;
                 }
             }
-            return View(loginViewModel);
+            return View(registerViewModel);
         }
 
 

@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 
 
 <div class="row loginForm">
@@ -15,10 +15,25 @@
                 </div>
             </div>
             <div class="form-group">
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <label asp-for="Password" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     <div class="text-danger">
                         <ul>
                             @Html.Raw(ViewBag.ErrorMessages)
@@ -29,7 +44,7 @@
 
             <div class="form-group pull-right formPullRightButton">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Register</button> 
+                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Register</button>
                 </div>
             </div>
         </form>

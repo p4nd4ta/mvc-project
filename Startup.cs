@@ -45,6 +45,8 @@ namespace Drinks_Self_Learn
                 options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
+                    options.SignIn.RequireConfirmedEmail = false;
+                    options.User.RequireUniqueEmail = false;
                     options.Lockout.MaxFailedAccessAttempts = 5;
                 }
              ).AddEntityFrameworkStores<AppDbContext>();
