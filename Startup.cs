@@ -82,7 +82,8 @@ namespace Drinks_Self_Learn
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePages();
             }
-            else
+            
+            if (env.IsProduction())
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseStatusCodePagesWithReExecute("/Home/HttpError/{0}");
