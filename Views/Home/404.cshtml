@@ -1,0 +1,29 @@
+﻿<h1>:(</h1>
+
+<h3 class="text-danger">Error 404: Not Found</h3>
+<h5 class="text-danger"> Sorry for that, our developer had too much booze apparently</h5>
+
+<br />
+<div class="text-left">
+    <div class="btn-group">
+        <a class="btn btn-warning" asp-controller="Home" asp-action="Index"><i class="fas fa-chevron-left"></i> Go back to Home</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Buy more drinks
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-controller="Drink" asp-action="List"
+                   asp-route-category="Alcoholic">Alcoholic</a>
+
+                <a class="dropdown-item" asp-controller="Drink" asp-action="List"
+                   asp-route-category="Non-Alcoholic">Non-Alcoholic</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-controller="Drink" asp-action="List" asp-route-category="">View all drinks</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="tenor-gif-embed" data-postid="10811259" data-share-method="host" data-width="100%" data-aspect-ratio="2.0672268907563027"><a href="https://tenor.com/view/drunk-gif-10811259">Drunk GIF</a> from <a href="https://tenor.com/search/drunk-gifs">Drunk GIFs</a></div>
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
