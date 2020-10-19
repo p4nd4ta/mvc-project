@@ -9,7 +9,7 @@
 @if (showBanner)
 {
     <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        Do you accept our privacy policy and cookie use policy ? <a asp-controller="Home" asp-action="Privacy">Learn More</a>
+        Do you accept our privacy policy and cookie use policy ? <i class="text-danger">If you <strong>DON'T</strong> you will <strong>NOT</strong> be able to order.</i> <a asp-controller="Home" asp-action="Privacy">Learn More</a>
         <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
             <span aria-hidden="true">Accept</span>
         </button>
