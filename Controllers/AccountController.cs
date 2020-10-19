@@ -72,9 +72,9 @@ namespace Drinks_Self_Learn.Controllers
             {
                 var user = new IdentityUser() { UserName = registerViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
-                var email = await _userManager.SetEmailAsync(user, registerViewModel.Email);
+                var result2 = await _userManager.SetEmailAsync(user, registerViewModel.Email);
 
-                if (result.Succeeded)
+                if (result.Succeeded && result2.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
