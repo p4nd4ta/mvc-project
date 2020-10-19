@@ -35,6 +35,7 @@ namespace Drinks_Self_Learn.Data.Models
         [Required(ErrorMessage = "Please enter your zip code")]
         [Display(Name = "Zip code")]
         [StringLength(10, MinimumLength = 4)]
+        [DataType(DataType.PostalCode)]
         public string ZipCode { get; set; }
 
         [StringLength(10)]
@@ -45,6 +46,7 @@ namespace Drinks_Self_Learn.Data.Models
         public string Country { get; set; }
 
         [Required(ErrorMessage = "Please enter your phone number")]
+        [Phone]
         [StringLength(25)]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone number")]
