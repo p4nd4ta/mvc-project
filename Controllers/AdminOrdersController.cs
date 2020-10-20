@@ -30,7 +30,7 @@ namespace Drinks_Self_Learn.Controllers
                         .Include(s => s.OrderLines)
                         .AsNoTracking();
 
-            return View(await _context.Orders.ToListAsync());
+            return View(await _context.Orders.OrderByDescending(o => o.OrderPlaced).ToListAsync());
         }
 
         // GET: OrdersAdmin/Details/5
