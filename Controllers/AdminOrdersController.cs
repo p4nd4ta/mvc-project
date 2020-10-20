@@ -48,7 +48,6 @@ namespace Drinks_Self_Learn.Controllers
                 drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId));
             }
 
-            //detailsList.Add(await _context.OrderDetails.FindAsync(order.OrderId));
             detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId));
 
             ViewData["Drinks"] = drinksList;
