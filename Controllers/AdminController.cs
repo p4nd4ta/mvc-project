@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Drinks_Self_Learn.Controllers
 {
+    [Authorize (Roles = "Administrator")]
     public class AdminController : Controller
     {
         private readonly AppDbContext _context;
@@ -21,7 +22,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: Admin
-        [Authorize (Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Drinks.Include(d => d.Category);
@@ -29,7 +29,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: Admin/Details/5
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +48,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: Admin/Create
-        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
@@ -60,7 +58,6 @@ namespace Drinks_Self_Learn.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId")] Drink drink)
         {
@@ -75,7 +72,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: Admin/Edit/5
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,7 +92,6 @@ namespace Drinks_Self_Learn.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId")] Drink drink)
         {
@@ -130,7 +125,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: Admin/Delete/5
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,7 +144,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // POST: Admin/Delete/5
-        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

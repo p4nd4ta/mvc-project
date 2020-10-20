@@ -13,6 +13,7 @@ using System.Data;
 
 namespace Drinks_Self_Learn.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdminOrdersController : Controller
     {
         private readonly AppDbContext _context;
@@ -23,7 +24,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: OrdersAdmin
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             var order = _context.Orders
@@ -34,7 +34,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: OrdersAdmin/Details/5
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
 
@@ -67,7 +66,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // GET: OrdersAdmin/Create
-        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -78,7 +76,6 @@ namespace Drinks_Self_Learn.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderId,FirstName,LastName,AddressLine1,AddressLine2,ZipCode,State,Country,PhoneNumber,Email")] Order order)
         {
@@ -91,7 +88,6 @@ namespace Drinks_Self_Learn.Controllers
             return View(order);
         }
 
-        [Authorize(Roles = "Administrator")]
         // GET: OrdersAdmin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -111,7 +107,6 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         // POST: OrdersAdmin/Delete/5
-        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
