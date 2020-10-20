@@ -41,13 +41,15 @@ namespace Drinks_Self_Learn.Controllers
                         .FirstOrDefaultAsync(m => m.OrderId == id);
 
             var drinksList = new List<Drink>();
-            var detailsList = new List<OrderDetail>();
+            IEnumerable<OrderDetail> detailsList;
 
             foreach (OrderDetail od in order.OrderLines)
             {
                 drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId));
-                detailsList.Add(await _context.OrderDetails.FirstOrDefaultAsync(m => m.DrinkId== od.Drink.DrinkId));
             }
+
+            //detailsList.Add(await _context.OrderDetails.FindAsync(order.OrderId));
+            detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId));
 
             ViewData["Drinks"] = drinksList;
             ViewData["Details"] = detailsList;

@@ -5,7 +5,7 @@
 }
 @{ 
 	IEnumerable<Drink> drinks = ViewData["Drinks"] as IEnumerable<Drink>;
-	List<OrderDetail> details = ViewData["Details"] as List<OrderDetail>;
+	IEnumerable<OrderDetail> details = ViewData["Details"] as IEnumerable<OrderDetail>;
 }
 
 <h1>Details</h1>
