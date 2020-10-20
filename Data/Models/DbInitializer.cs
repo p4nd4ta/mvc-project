@@ -32,7 +32,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "https://i.imgur.com/45f9TuH.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/shumensko.jpg"
                     },
                     new Drink
                     {
@@ -42,7 +42,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/9nbFw5T.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/black-label.jpg"
                     },
                     new Drink
                     {
@@ -52,7 +52,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/4PMArR7.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/burgas-63.jpg"
                     },
                     new Drink
                     {
@@ -62,7 +62,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/fB973vf.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/jack-daniels.png"
                     },
                     new Drink
                     {
@@ -72,7 +72,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/BROtmDb.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/ot-mazeto.jpeg"
                     },
                     new Drink
                     {
@@ -82,7 +82,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/ZY3NE1v.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/pirinsko.jpg"
                     },
                     new Drink
                     {
@@ -92,7 +92,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/ogkkra2.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/red-label.jpg"
                     },
                     new Drink
                     {
@@ -102,7 +102,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/YTRIgI7.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/rus.jpg"
                     },
                     new Drink
                     {
@@ -112,7 +112,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/fNy6M8z.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/savoy.jpg"
                     },
                     new Drink
                     {
@@ -122,7 +122,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/iHPn7DO.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/smirnoff.jpg"
                     },
                     new Drink
                     {
@@ -132,7 +132,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "https://i.imgur.com/uWIQo1O.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cola.jpg"
                     },
                     new Drink
                     {
@@ -142,7 +142,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/GZzRx4B.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cappy-orange.jpeg"
                     },
                     new Drink
                     {
@@ -152,7 +152,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "https://i.imgur.com/jZi6EH9.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/monster.jpg"
                     },
                     new Drink
                     {
@@ -162,7 +162,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/4OV9OLD.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell1.png"
                     },
                     new Drink
                     {
@@ -172,7 +172,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/C7QBwha.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell2.png"
                     },
                     new Drink
                     {
@@ -182,7 +182,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/DlP3dFz.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell3.png"
                     },
                     new Drink
                     {
@@ -192,7 +192,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/ZUBwo3X.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell4.png"
                     },
                     new Drink
                     {
@@ -202,7 +202,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/QYZCBU9.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell5.png"
                     },
                     new Drink
                     {
@@ -212,7 +212,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/o7FvLzL.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell6.png"
                     },
                     new Drink
                     {
@@ -222,7 +222,7 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "https://i.imgur.com/EG3hnyR.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell7.png"
                     }
                 );
             }

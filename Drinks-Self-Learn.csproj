@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Content\favicon\" />
-    <Folder Include="wwwroot\Images\" />
     <Folder Include="wwwroot\contactImages\" />
   </ItemGroup>
 
