@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Delete";
 }
+@{
+    IEnumerable<Drink> drinks = ViewData["Drinks"] as IEnumerable<Drink>;
+    IEnumerable<OrderDetail> details = ViewData["Details"] as IEnumerable<OrderDetail>;
+}
 
 <h1>Delete</h1>
 
@@ -11,62 +15,106 @@
     <h4>Order ID: @Model.OrderId</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LastName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AddressLine1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AddressLine1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AddressLine2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AddressLine2)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ZipCode)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ZipCode)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.State)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.State)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Country)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Country)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-    
+
+
+    <h4>Ordered Items:</h4>
+    <table border="1">
+        <tr class="bg-dark text-white font-weight-bold">
+            <td>Drink Name</td>
+            <td>Price</td>
+            <td>Ammount</td>
+            <td>In Stock ?</td>
+        </tr>
+        @foreach (Drink drink in drinks)
+        {
+            <tr>
+                <td>@drink.Name</td>
+                <td>@drink.Price</td>
+
+
+                @foreach (OrderDetail od in details)
+                {
+                    @if (drink.DrinkId == od.DrinkId)
+                    {
+                        <td> x @od.Amount</td>
+                    }
+                }
+
+
+                @if (drink.InStock)
+                {
+                    <td class="bg-success text-white">@drink.InStock</td>
+                }
+                else
+                {
+                    <td class="bg-danger text-white">@drink.InStock</td>
+                }
+            </tr>
+        }
+        <tfoot>
+            <tr class="bg-dark text-white font-weight-bold">
+                <td>Order Total:</td>
+                <td>@Model.OrderTotal</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br /><br />
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="OrderId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> <br />
