@@ -46,7 +46,7 @@ If it is set to `Production`, the
 
 
 ## Database
-![DB-tables](https://i.ibb.co/pK4m6v4/DB-tables.png)
+![DB-tables](https://i.imgur.com/zNCv50W.png)
 
 ## License
 [MIT](https://github.com/p4nd4ta/mvc-project/blob/main/LICENSE)
