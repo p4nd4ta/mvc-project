@@ -1,7 +1,5 @@
-﻿//using AspNetCore;
-using Drinks_Self_Learn.Data.Interfaces;
+﻿using Drinks_Self_Learn.Data.Interfaces;
 using Drinks_Self_Learn.Data.Models;
-//using Drinks_Self_Learn.Data.mocks;
 using Drinks_Self_Learn.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -16,7 +14,6 @@ namespace Drinks_Self_Learn.Controllers
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IDrinkRepository _drinkRepository;
-        //private readonly DrinkRepository mockDrinkRepository = new MockDrinkRepository();
 
         public DrinkController(ICategoryRepository categoryRepository, IDrinkRepository drinkRepository)
         {

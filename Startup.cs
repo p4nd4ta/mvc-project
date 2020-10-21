@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Drinks_Self_Learn.Data;
 using Drinks_Self_Learn.Data.Interfaces;
 using Drinks_Self_Learn.Data.Models;
-//using Drinks_Self_Learn.Data.mocks;
 using Drinks_Self_Learn.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -62,7 +61,6 @@ namespace Drinks_Self_Learn
             services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            //MvcOptions.EnableEndpointRouting = false;
 
             services.AddMemoryCache();
             services.AddSession();
@@ -96,7 +94,6 @@ namespace Drinks_Self_Learn
             app.UseAuthentication();
             app.UseCookiePolicy();
             app.UseAuthorization();
-            //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("categoryFilter", "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });

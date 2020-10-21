@@ -11,6 +11,5 @@ namespace Drinks_Self_Learn.Data.Models
         public string CategoryName { get; set; }
         public string Descrition { get; set; }
         public List<Drink> Drinks { get; set; }
-        //public string Description { get; internal set; }
     }
 }
