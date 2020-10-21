@@ -65,5 +65,9 @@ namespace Drinks_Self_Learn.Data.Models
         [BindNever]
         [ScaffoldColumn(false)]
         public DateTime OrderPlaced { get; set; }
+
+        [BindNever]
+        [ScaffoldColumn(false)]
+        public bool OrderProcessed { get; set; }
     }
 }

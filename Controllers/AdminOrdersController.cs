@@ -112,5 +112,34 @@ namespace Drinks_Self_Learn.Controllers
         {
             return _context.Orders.Any(e => e.OrderId == id);
         }
+
+        public async Task<IActionResult> Mark(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            if (order.OrderProcessed == false )
+            {
+                order.OrderProcessed = true;
+            }
+            else
+            {
+                order.OrderProcessed = false;
+            }
+            
+            _context.Update(order);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details","AdminOrders", new { id = id });
+        }
     }
 }

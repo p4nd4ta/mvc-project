@@ -113,6 +113,16 @@
             </tr>
         </tfoot>
     </table>
+    <br />
+    <strong>Current Status:</strong>
+    @if (!Model.OrderProcessed)
+    {
+        <strong class="text-danger">Unprocessed</strong>
+    }
+    else
+    {
+        <i class="text-success">Processed</i>
+    }
     <br /><br />
 
     <form asp-action="Delete">

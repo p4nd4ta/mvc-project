@@ -120,6 +120,20 @@
 </table>
 
 <br /><br />
-<div>
-	<a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
-</div>
+	  <div>
+		  <strong>Current Status:</strong>
+		  @if (!Model.OrderProcessed)
+		  {
+			  <strong class="text-danger">Unprocessed</strong>
+			  <br>
+			  <a asp-action="Mark" asp-route-id="@Model.OrderId" class="btn btn-success"><i class="fas fa-check"></i> Mark as Processed</a>
+		  }
+		  else
+		  {
+			  <i class="text-success">Processed</i>
+			  <br>
+			  <a asp-action="Mark" asp-route-id="@Model.OrderId" class="btn btn-danger"><i class="fas fa-times"></i> Mark as Unprocessed</a>
+		  }
+		  <br /><br />
+		  <a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
+	  </div>
