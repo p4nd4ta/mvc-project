@@ -15,12 +15,13 @@ namespace Drinks_Self_Learn.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager; //used for new user REGISTRATION
+        private readonly SignInManager<IdentityUser> _signInManager; //used for user LOGIN
+        // using the Built in AspNetCore Authorization and Identity
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-            _signInManager = signInManager;
+            _signInManager = signInManager; // and injecting them
             _userManager = userManager;
         }
 
@@ -37,15 +38,15 @@ namespace Drinks_Self_Learn.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(loginViewModel);
+                return View(loginViewModel); // if the model state is invalid, return the user to the same login view
             }
 
-            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName); // assign to the user variable the user that is specified in the login form (by the entered username)
 
-            if (user != null)
+            if (user != null) // if the user, get from above doesn't exist - return an error
             {
-                var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, true, true);
-                if (result.Succeeded)
+                var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, true, true); // here we check for the user/password combination from the login form
+                if (result.Succeeded) // if they are correct, redirect the user to the url before, he/she were prompted to login, if it is empty, redirect to the homepage
                 {
                     if (string.IsNullOrEmpty(loginViewModel.ReturnUrl))
                     {
@@ -54,7 +55,7 @@ namespace Drinks_Self_Learn.Controllers
                     return Redirect(loginViewModel.ReturnUrl);
                 }
             }
-            ModelState.AddModelError("UserName", "Username/Password not found !");
+            ModelState.AddModelError("UserName", "Username/Password not found !"); // the error message for credentials missmatch or not existing user
             return View(loginViewModel);
         }
 
@@ -70,15 +71,15 @@ namespace Drinks_Self_Learn.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = registerViewModel.UserName };
+                var user = new IdentityUser() { UserName = registerViewModel.UserName }; //here pass the values from the view model
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 var result2 = await _userManager.SetEmailAsync(user, registerViewModel.Email);
 
-                if (result.Succeeded && result2.Succeeded)
+                if (result.Succeeded && result2.Succeeded) // check if the email and password were sucessfully written
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                else
+                else // pass an errorlist to the viewmodel with the AspNetCore Identity auto generated errors
                 {
                     var errList = "";
                     var error = result.Errors.ToList();
@@ -97,7 +98,7 @@ namespace Drinks_Self_Learn.Controllers
         [HttpPost]
         [Authorize]
 
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout() // sign out the user and redirect to homepage
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");

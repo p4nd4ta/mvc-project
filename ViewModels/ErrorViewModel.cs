@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Drinks_Self_Learn.ViewModels
 {
-    public class ErrorViewModel
+    public class ErrorViewModel // standard AspNetCore error view model
     {
         public string RequestId { get; set; }
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);

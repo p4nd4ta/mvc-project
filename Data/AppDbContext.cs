@@ -1,6 +1,6 @@
 ﻿using Drinks_Self_Learn.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;//
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;//
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drinks_Self_Learn.Data
 {
-    public class AppDbContext: IdentityDbContext<IdentityUser>
+    public class AppDbContext: IdentityDbContext<IdentityUser> // Inherit from this class to get the AspNetCore Identity features
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {

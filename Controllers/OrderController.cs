@@ -16,7 +16,7 @@ namespace Drinks_Self_Learn.Controllers
 
         public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart)
         {
-            _orderRepository = orderRepository;
+            _orderRepository = orderRepository; // inject the shopping cart model and Orders Repo Interface
             _shoppingCart = shoppingCart;
         }
 
@@ -28,28 +28,29 @@ namespace Drinks_Self_Learn.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
 
         public IActionResult Checkout(Order order)
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            _shoppingCart.ShoppingCartItems = items; //gets the current shopping cart items and passes them
 
-            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            if (_shoppingCart.ShoppingCartItems.Count == 0) //validity checks
             {
                 ModelState.AddModelError("", "Your cart is empty, add some products first");
             }
 
             if (ModelState.IsValid)
             {
-                order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
-                _orderRepository.CreateOrder(order);
-                _shoppingCart.ClearCart();
+                order.OrderTotal = _shoppingCart.GetShoppingCartTotal(); //get the total price of the order and assign it to the order object
+                _orderRepository.CreateOrder(order); //create the order using the interface
+                _shoppingCart.ClearCart(); //delete the cart items
                 return RedirectToAction("CheckoutComplete");
             }
             return View(order);
         }
 
-        public IActionResult CheckoutComplete()
+        public IActionResult CheckoutComplete() // return a view to the the user with completion message
         {
             ViewBag.CheckoutCompleteMessage = "Thank you for your purchase !";
             return View();

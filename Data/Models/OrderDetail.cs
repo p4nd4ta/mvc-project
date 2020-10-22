@@ -13,7 +13,7 @@ namespace Drinks_Self_Learn.Data.Models
         public int Amount { get; set; }
         public decimal Price { get; set; }
 
-        public virtual Drink Drink { get; set; }
-        public virtual Order Order { get; set; }
+        public virtual Drink Drink { get; set; } //
+        public virtual Order Order { get; set; } // to make sure Entity Frameowrk actually understand the relations here
     }
 }

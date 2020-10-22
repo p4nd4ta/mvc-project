@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Drinks_Self_Learn.Data.Repositories
 {
+
+     // We will use this repository to get the items from the shopping cart and save them in the database
     public class OrderRepository:IOrderRepository
     {
         private readonly AppDbContext _appDbContext;
@@ -14,13 +16,13 @@ namespace Drinks_Self_Learn.Data.Repositories
 
         public OrderRepository(AppDbContext appDbContext, ShoppingCart shoppingCart)
         {
-            _appDbContext = appDbContext;
+            _appDbContext = appDbContext; //Dependency Injection
             _shoppingCart = shoppingCart;
         }
 
         public void CreateOrder(Order order)
         {
-            order.OrderPlaced = DateTime.Now;
+            order.OrderPlaced = DateTime.Now; //get the current time/date the order is placed
             _appDbContext.Orders.Add(order);
             _appDbContext.SaveChanges();
 
@@ -28,16 +30,18 @@ namespace Drinks_Self_Learn.Data.Repositories
 
             foreach (var item in shoppingCartItems)
             {
-                var orderDetail = new OrderDetail()
+                var orderDetail = new OrderDetail() //creating order detail for each item of the shopping cart and set their details/properties
                 {
                     Amount = item.Amount,
                     DrinkId = item.Drink.DrinkId,
                     OrderId = order.OrderId,
                     Price = item.Drink.Price
                 };
-                _appDbContext.OrderDetails.Add(orderDetail);
+                _appDbContext.OrderDetails.Add(orderDetail); //get the items with their details and put them in the DB
             }
             _appDbContext.SaveChanges();
         }
+
+        // for more thorough look at the Design, please refer to the note I have left inside "Startup.cs", under the services configuration
     }
 }

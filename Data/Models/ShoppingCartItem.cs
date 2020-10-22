@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Drinks_Self_Learn.Data.Models
 {
-    public class ShoppingCartItem
+    public class ShoppingCartItem // holds the properties of each item in the shopping cart
     {
         public int ShoppingCartItemId { get; set; }
         public Drink Drink { get; set; }

@@ -8,7 +8,7 @@ namespace Drinks_Self_Learn.ViewModels
 {
     public class ShoppingCartViewModel
     {
-        public ShoppingCart ShoppingCart { get; set; }
-        public decimal ShoppingCartTotal { get; set; }
+        public ShoppingCart ShoppingCart { get; set; } // So we should know to which shopping cart the items belong
+        public decimal ShoppingCartTotal { get; set; } // The total price of the items inside
     }
 }

@@ -14,9 +14,9 @@ namespace Drinks_Self_Learn.Controllers
         private readonly IDrinkRepository _drinkRepository;
         public HomeController(IDrinkRepository drinkRepository)
         {
-            _drinkRepository = drinkRepository;
+            _drinkRepository = drinkRepository; //Dependency injection
         }
-        public ViewResult Index()
+        public ViewResult Index() //get the preffered drinks through the collection, defined in the IDrinkRepository, pass them to the homeViewModel, and view them in the View with Html.PartialAsync
         {
             var homeViewModel = new HomeViewModel
             {
@@ -43,7 +43,7 @@ namespace Drinks_Self_Learn.Controllers
         {
             if (id == 404)
             {
-                return this.View("404");
+                return this.View("404"); //if there is 404 error, we return the 404 error view, else call the exception hander from above
             }
             return Error();
 

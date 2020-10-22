@@ -7,6 +7,6 @@
 <div class="home-flex">
     @foreach (var drink in Model.PreferredDrinks)
     {
-        @Html.Partial("DrinksSummary",drink)
+        @await Html.PartialAsync("DrinksSummary",drink)
     }
 </div>

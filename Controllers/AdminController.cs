@@ -11,14 +11,14 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Drinks_Self_Learn.Controllers
 {
-    [Authorize (Roles = "Administrator")]
-    public class AdminController : Controller
+    [Authorize (Roles = "Administrator")] // make sure only authorized users with the Administrator role can have access
+    public class AdminController : Controller // this is nothing more than a Standard Scaffolded Controller with Views (Only the Views for it have been customized.)
     {
         private readonly AppDbContext _context;
-
+        // here we don't demostrate the Repository Design Pattern, we are directly access the Db Context
         public AdminController(AppDbContext context)
         {
-            _context = context;
+            _context = context; // inject the AppDbContext
         }
 
         // GET: Admin

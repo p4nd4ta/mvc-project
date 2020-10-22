@@ -8,7 +8,7 @@ namespace Drinks_Self_Learn.Controllers
 {
     public class ContactController : Controller
     {
-        public ViewResult Index()
+        public ViewResult Index() // just returning the Contact page, nothing fancy here
         {
             return View();
         }

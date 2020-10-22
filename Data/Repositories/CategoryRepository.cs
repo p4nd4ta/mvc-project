@@ -13,9 +13,11 @@ namespace Drinks_Self_Learn.Data.Repositories
 
         public CategoryRepository(AppDbContext appDbContext)
         {
-            _appDbContext = appDbContext;
+            _appDbContext = appDbContext; //injecting the DB context
         }
 
         public IEnumerable<Category> Categories => _appDbContext.Categories;
+
+        // for more thorough look at the Design, please refer to the note I have left inside "Startup.cs", under the services configuration
     }
 }

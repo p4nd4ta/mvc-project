@@ -8,6 +8,6 @@
 
     @{ foreach (Drink drink in Model.Drinks)
                     {
-        @Html.Partial("DrinksSummary", drink) } }
+        @await Html.PartialAsync("DrinksSummary", drink) } }
 
 </div>

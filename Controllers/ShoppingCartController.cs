@@ -12,39 +12,39 @@ namespace Drinks_Self_Learn.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly IDrinkRepository _drinkRepository;
+        private readonly IDrinkRepository _drinkRepository; //to get the data about the drinks
         private readonly ShoppingCart _shoppingCart;
 
         public ShoppingCartController(IDrinkRepository drinkRepository, ShoppingCart shoppingCart)
         {
-            _drinkRepository = drinkRepository;
+            _drinkRepository = drinkRepository; // Dependency injections
             _shoppingCart = shoppingCart;
         }
 
-        public ViewResult Index()
+        public ViewResult Index() //Passing the values to the viewmodel
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
 
-            var sCVM = new ShoppingCartViewModel
+            var shoppingCartVM = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             };
-            return View(sCVM);
+            return View(shoppingCartVM);
         }
 
-        public RedirectToActionResult AddToShoppingCart(int drinkId)
+        public RedirectToActionResult AddToShoppingCart(int drinkId) //get the selected drink(the one clicked on) and add it to cart
         {
-            var selectedDrink = _drinkRepository.Drinks.FirstOrDefault(p => p.DrinkId == drinkId);
+            var selectedDrink = _drinkRepository.Drinks.FirstOrDefault(p => p.DrinkId == drinkId); //get the drink object from DB, with the ID from the selected drink id above
             if (selectedDrink != null)
             {
-                _shoppingCart.AddToCart(selectedDrink, 1);
+                _shoppingCart.AddToCart(selectedDrink, 1); //adds 1x the selectedDrink
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); //redirects to the shoppingcart index page
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int drinkId)
+        public RedirectToActionResult RemoveFromShoppingCart(int drinkId) // same as above, but removes the drink instead of adding it
         {
             var selectedDrink = _drinkRepository.Drinks.FirstOrDefault(p => p.DrinkId == drinkId);
             if (selectedDrink != null)

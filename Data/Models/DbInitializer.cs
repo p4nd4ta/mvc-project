@@ -13,14 +13,15 @@ namespace Drinks_Self_Learn.Data
         public static void Seed(IServiceProvider applicationBuilder)
         {
             AppDbContext context =
-                applicationBuilder.GetRequiredService<AppDbContext>();
+                applicationBuilder.GetRequiredService<AppDbContext>(); // get the required service access to the AppDbContext
 
-            if (!context.Categories.Any())
+            if (!context.Categories.Any()) // check if there are ANY categories, if not - add them
             {
                 context.Categories.AddRange(Categories.Select(c => c.Value));
+                // From the method at the end of the file we put the categories in a Dictionary Collection and pass them here, and then - to the DBcontext
             }
 
-            if (!context.Drinks.Any())
+            if (!context.Drinks.Any()) // check if there are ANY drinks, if not - add them
             {
                 context.AddRange
                 (
@@ -227,7 +228,7 @@ namespace Drinks_Self_Learn.Data
                 );
             }
 
-            context.SaveChanges();
+            context.SaveChanges(); //Commiting the data to the context
         }
 
         private static Dictionary<string, Category> categories;

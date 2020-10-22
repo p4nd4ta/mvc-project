@@ -16,6 +16,7 @@ namespace Drinks_Self_Learn.ViewModels
         
         [Required]
         [EmailAddress]
+        [RegularExpression(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$", ErrorMessage = "The Email field is not a valid e-mail address.")]
         public string Email { get; set; }
 
         [Required]
