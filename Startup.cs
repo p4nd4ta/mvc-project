@@ -47,17 +47,17 @@ namespace Drinks_Self_Learn
                     options.User.RequireUniqueEmail = false;
                     options.Lockout.MaxFailedAccessAttempts = 5;
                 }
-             ).AddEntityFrameworkStores<AppDbContext>(); //here the Identity service is configured with its options, it is using the AppDbContext to store the data(and it's tables)
+             ).AddEntityFrameworkStores<AppDbContext>(); //here the Identity service is configured with its options, it is using the AppDbContext to store the data(it's tables and records)
             services.AddControllersWithViews(configure =>
             {
                 configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); //added as a global filter, to be safe to some extend if we have missed something
             });
 
-            
-            //
+
+            //Repositories
             services.AddTransient<IDrinkRepository, DrinkRepository>(); //Creates the service each time it is requested
-            services.AddTransient<ICategoryRepository, CategoryRepository>(); // Reposi
-            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>(); //
+            services.AddTransient<IOrderRepository, OrderRepository>(); //
             //
 
             /** Note About The Application Design
@@ -68,12 +68,12 @@ namespace Drinks_Self_Learn
               *  - Once in-memory, entities can be changed and persisted back in the DB
               * 
               * We have implemented specific Repository-Interface-Class pairs for these aggregates - Drinks, Categories, Orders,
-              * which we use to work [CRUD operations (In our case only 'R') implemented in the Interface] with data through the IServices we have created,
+              * which we use to work [CRUD operations (In our case mostly 'R') implemented in the Interface] with data through the IServices we have created,
               * instead of the appdbcontext as a whole.
               * 
               * Controller -> Service -> Repository -> DBContext -> EF Core -> SQL Query -> MS SQL Server Database
               * It is a different design pattern (Repository Pattern).
-              * Anyways in the admin panel we work directly with the appdbcontext, so both Designs are covered in one app,
+              * Anyways in the admin panel we work directly(injecting it) with the appdbcontext, so both Designs are covered in one app,
               * BUT definitely it would have been better and more consistent if we had used the same Design Pattern everywhere.
             **/
 

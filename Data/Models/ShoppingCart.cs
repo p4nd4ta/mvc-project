@@ -34,7 +34,7 @@ namespace Drinks_Self_Learn.Data.Models
         public void AddToCart(Drink drink, int amount) //Add item to cart
         {
             var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(
-                s => s.Drink.DrinkId == drink.DrinkId && s.ShoppingCartId == ShoppingCartId);
+                s => s.Drink.DrinkId == drink.DrinkId && s.ShoppingCartId == ShoppingCartId); // SELECT TOP(2) * FROM ShoppingCartItems SI JOIN DRINKS D ON D.DrinkId = SI.DrinkId WHERE SI.ShoppingCartId = @PassedParameter
             if (shoppingCartItem == null) // if we dont have this specific drink in the cart we add it with amount of 1
             {
                 shoppingCartItem = new ShoppingCartItem //passing the properties of to the new object
@@ -43,7 +43,7 @@ namespace Drinks_Self_Learn.Data.Models
                     Drink = drink,
                     Amount = 1
                 };
-                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem); // INSERT INTO ShoppingCartItems(ShoppingCartItemId,DrinkId,Amount,ShoppingCartId) VALUES(...)
             }
             else //else we increase the amount of the specific drink with 1
             {
@@ -56,7 +56,7 @@ namespace Drinks_Self_Learn.Data.Models
         {
             var shoppingCartItem =
                 _appDbContext.ShoppingCartItems.SingleOrDefault(
-                    s => s.Drink.DrinkId == drink.DrinkId && s.ShoppingCartId == ShoppingCartId);
+                    s => s.Drink.DrinkId == drink.DrinkId && s.ShoppingCartId == ShoppingCartId); // SELECT TOP(2) * FROM ShoppingCartItems SI JOIN DRINKS D ON D.DrinkId = SI.DrinkId WHERE SI.ShoppingCartId = @PassedParameter
             var localAmount = 0;
             if (shoppingCartItem != null)
             {
@@ -67,7 +67,7 @@ namespace Drinks_Self_Learn.Data.Models
                 }
                 else // else removes it entirely
                 {
-                    _appDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                    _appDbContext.ShoppingCartItems.Remove(shoppingCartItem); // DELETE FROM ShoppingCartItems WHERE ShoppingCartItemId = @PassedParameter
                 }
             }
             _appDbContext.SaveChanges();
@@ -80,7 +80,7 @@ namespace Drinks_Self_Learn.Data.Models
                 (ShoppingCartItems =
                     _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                         .Include(s => s.Drink)
-                        .ToList());
+                        .ToList()); // SELECT * FROM ShoppingCartItems SI JOIN DRINKS D ON D.DrinkId = SI.DrinkId WHERE SI.ShoppingCartId = @PassedParameter
         }
 
         public void ClearCart() //removes all items from the shopping cart(called after successful checkout)
@@ -88,7 +88,7 @@ namespace Drinks_Self_Learn.Data.Models
             var cartItems = _appDbContext
                 .ShoppingCartItems
                 .Where(cart => cart.ShoppingCartId == ShoppingCartId);
-            _appDbContext.ShoppingCartItems.RemoveRange(cartItems);
+            _appDbContext.ShoppingCartItems.RemoveRange(cartItems); // DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @PassedParameter AND ShoppingCartItemId = @PassedParameter
 
             _appDbContext.SaveChanges();
         }
@@ -96,7 +96,7 @@ namespace Drinks_Self_Learn.Data.Models
         public decimal GetShoppingCartTotal() // return the total SUM of price of all the items currently in the cart
         {
             var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                .Select(c => c.Drink.Price * c.Amount).Sum();
+                .Select(c => c.Drink.Price * c.Amount).Sum(); //SELECT SUM(D.Price * SI.Amount) AS total FROM ShoppingCartItems SI JOIN DRINKS D ON D.DrinkId = SI.DrinkId WHERE SI.ShoppingCartId = @PassedParameter
             return total;
         }
     }

@@ -29,7 +29,7 @@ namespace Drinks_Self_Learn.Controllers
 
             if (string.IsNullOrEmpty(category)) //if there is no parameter, just show all drinks
             {
-                drinks = _drinkRepository.Drinks.OrderBy(n => n.DrinkId);
+                drinks = _drinkRepository.Drinks.OrderBy(n => n.DrinkId); // SELECT * FROM Drinks ORDER BY DrinkId
                 currentCategory = "All drinks";
             }
             else // process the 2 categories
@@ -37,10 +37,12 @@ namespace Drinks_Self_Learn.Controllers
                 if (string.Equals("Alcoholic",_category,StringComparison.OrdinalIgnoreCase)) //get the drinks based on the category passed
                 {
                     drinks = _drinkRepository.Drinks.Where(p => p.Category.CategoryName.Equals("Alcoholic")).OrderBy(p => p.Name); //query the DB through the Repository to get the Alcoholic Drinks
+                    // SELECT * FROM Drinks D JOIN Categories C ON D.CategoryId = C.CategoryId WHERE C.CategoryName ='Alcoholic' ORDER BY D.Name
                 }
                 else
                 {
                     drinks = _drinkRepository.Drinks.Where(p => p.Category.CategoryName.Equals("Non-alcoholic")).OrderBy(p => p.Name); //query the DB through the Repository to get the Non-alcoholic Drinks
+                    // SELECT * FROM Drinks D JOIN Categories C ON D.CategoryId = C.CategoryId WHERE C.CategoryName ='Non-alcoholic' ORDER BY D.Name
                 }
                 currentCategory = _category; // Used for the View, to display the current category of drinks to the user
             }
