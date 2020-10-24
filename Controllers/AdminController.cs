@@ -25,6 +25,7 @@ namespace Drinks_Self_Learn.Controllers
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Drinks.Include(d => d.Category);
+            // SELECT * FROM Drinks D JOIN Categories C ON D.CategoryId = C.CategoryId
             return View(await appDbContext.ToListAsync());
         }
 
@@ -39,6 +40,7 @@ namespace Drinks_Self_Learn.Controllers
             var drink = await _context.Drinks
                 .Include(d => d.Category)
                 .FirstOrDefaultAsync(m => m.DrinkId == id);
+            //SELECT TOP(1) * FROM Drinks D JOIN Categories C ON D.CategoryId = C.CategoryId WHERE D.drinkId = @PassedParameter
             if (drink == null)
             {
                 return NotFound();
@@ -65,6 +67,7 @@ namespace Drinks_Self_Learn.Controllers
             {
                 _context.Add(drink);
                 await _context.SaveChangesAsync();
+                //INSERT INTO Drinks (...) VALUES(...)
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", drink.CategoryId);
@@ -105,6 +108,7 @@ namespace Drinks_Self_Learn.Controllers
                 try
                 {
                     _context.Update(drink);
+                    // UPDATE Drinks SET ... ... WHERE DrinkId = @PassedParameter
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -151,6 +155,7 @@ namespace Drinks_Self_Learn.Controllers
             var drink = await _context.Drinks.FindAsync(id);
             _context.Drinks.Remove(drink);
             await _context.SaveChangesAsync();
+            // DELETE FROM Drinks WHERE DrinkId = @PassedParameter
             return RedirectToAction(nameof(Index));
         }
 

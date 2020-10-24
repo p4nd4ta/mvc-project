@@ -37,7 +37,7 @@ namespace Drinks_Self_Learn.Data.Models
                 s => s.Drink.DrinkId == drink.DrinkId && s.ShoppingCartId == ShoppingCartId); // SELECT TOP(2) * FROM ShoppingCartItems SI JOIN DRINKS D ON D.DrinkId = SI.DrinkId WHERE SI.ShoppingCartId = @PassedParameter
             if (shoppingCartItem == null) // if we dont have this specific drink in the cart we add it with amount of 1
             {
-                shoppingCartItem = new ShoppingCartItem //passing the properties of to the new object
+                shoppingCartItem = new ShoppingCartItem //passing the properties to the new object, creating new record in ShoppingCartItems table
                 {
                     ShoppingCartId = ShoppingCartId,
                     Drink = drink,

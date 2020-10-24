@@ -10,9 +10,9 @@ namespace Drinks_Self_Learn.Data.Models
     public class Order
     {
         [BindNever]
-        public int OrderId { get; set; }
+        public int OrderId { get; set; } //Primary Key (many-to-many relation: Orders<->OrderDetails<->Drinks)
 
-        public List<OrderDetail> OrderLines { get; set; }
+        public List<OrderDetail> OrderLines { get; set; } // Contains the details for the OrderId, DrinkId, Amount, Price
 
         [Required(ErrorMessage = "Please enter your first name")]
         [Display(Name = "First name")]

@@ -24,7 +24,7 @@ namespace Drinks_Self_Learn.Controllers
         public ViewResult Index() //Passing the values to the viewmodel
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            _shoppingCart.ShoppingCartItems = items; // using a separate "items" variable, just to make the code look more understandable, still can be assigned directly though
 
             var shoppingCartVM = new ShoppingCartViewModel
             {

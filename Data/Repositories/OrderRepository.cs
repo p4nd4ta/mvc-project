@@ -37,7 +37,7 @@ namespace Drinks_Self_Learn.Data.Repositories
                     OrderId = order.OrderId,
                     Price = item.Drink.Price
                 };
-                _appDbContext.OrderDetails.Add(orderDetail); //get the items with their details and put them in the DB
+                _appDbContext.OrderDetails.Add(orderDetail); //put the items with their details in the DB
             }
             _appDbContext.SaveChanges();
         }

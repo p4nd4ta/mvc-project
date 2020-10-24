@@ -28,10 +28,10 @@ namespace Drinks_Self_Learn.Controllers
         public async Task<IActionResult> Index()
         {
             var order = _context.Orders
-                        .Include(s => s.OrderLines) //include the OrderLines List since it actually contains the drinks data for the order
+                        .Include(s => s.OrderLines) //include the OrderLines List since it holds the "order details" data for the order
                         .AsNoTracking();
 
-            return View(await _context.Orders.OrderByDescending(o => o.OrderPlaced).ToListAsync()); // and return to the Index View all items,ordered descending by the order date
+            return View(await _context.Orders.OrderByDescending(o => o.OrderPlaced).ToListAsync()); // and return to the "Index" View all items, sorted descending by the order date
         }
 
         // GET: OrdersAdmin/Details/5
@@ -43,7 +43,7 @@ namespace Drinks_Self_Learn.Controllers
             }
 
             var order = await _context.Orders.Include(s => s.OrderLines)
-                        .FirstOrDefaultAsync(m => m.OrderId == id); // based on the ID I search the db context and get the order with the same id
+                        .FirstOrDefaultAsync(m => m.OrderId == id); // based on the ID, search the db context and get the order with the same id
 
             if (order == null) // some more validation checks
             {
@@ -51,14 +51,16 @@ namespace Drinks_Self_Learn.Controllers
             }
 
             var drinksList = new List<Drink>();
-            IEnumerable<OrderDetail> detailsList; // create an enumerable structure objects for the drinks and the details for the drink
+            IEnumerable<OrderDetail> detailsList; // create an enumerable structure objects to hold the drinks and the details for the order(Amount, etc...)
 
-            foreach (OrderDetail od in order.OrderLines)
+            foreach (OrderDetail od in order.OrderLines) // a very different approach here...
             {
-                drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId)); //iterate and add the drinks to the list from above
+                drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId)); //iterate one-by-one and add the drinks to the list from above
+                // SELECT TOP(1) D.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter AND D.DrinkId = @PassedParameter
             }
 
-            detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId)); //same thing as above, but here we get the amount of the drinks and drinks themselves for the order with the same id
+            detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId)); //same thing as above, but here we get it done with a single query, retrieve the order details for the order with the same id
+            // SELECT OD.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter
 
             ViewData["Drinks"] = drinksList; // and to pass them to the view we use ViewData
             ViewData["Details"] = detailsList;
@@ -88,9 +90,11 @@ namespace Drinks_Self_Learn.Controllers
             foreach (OrderDetail od in order.OrderLines)
             {
                 drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId));
+                // SELECT TOP(1) D.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter AND D.DrinkId = @PassedParameter
             }
 
             detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId));
+            // SELECT OD.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter
 
             ViewData["Drinks"] = drinksList;
             ViewData["Details"] = detailsList;
@@ -105,6 +109,7 @@ namespace Drinks_Self_Learn.Controllers
         {
             var order = await _context.Orders.FindAsync(id);
             _context.Orders.Remove(order); //remove the order from the DB
+            // DELETE FROM Orders WHERE OrderId = @PassedParameter
             await _context.SaveChangesAsync(); //save the changes
             return RedirectToAction("Index");
         }
@@ -138,6 +143,7 @@ namespace Drinks_Self_Learn.Controllers
             }
             
             _context.Update(order);
+            //UPDATE Orders SET OrderProcessed = @'true' / @'false' WHERE OrderId = @PassedParameter
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Details","AdminOrders", new { id = id });
