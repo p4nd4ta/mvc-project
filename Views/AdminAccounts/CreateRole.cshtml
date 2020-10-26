@@ -1,0 +1,27 @@
+﻿@model CreateRoleViewModel
+
+
+<h1>Create New Role</h1>
+
+<div class="row loginForm">
+    <div class="col-md-8 col-md-offset-2">
+        <form asp-controller="AdminAccounts" asp-action="CreateRole" method="post" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label asp-for="RoleName" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="form-group pull-right formPullRightButton">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Create Role</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

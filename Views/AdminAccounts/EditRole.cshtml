@@ -1,0 +1,53 @@
+﻿@model EditRoleViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Role</h1>
+
+<h5>RoleId: @Model.Id</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditUser" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Users in this role</h4>
+    </div>
+    <div class="card-body">
+        @if (Model.Users.Any())
+        {
+            foreach (var user in Model.Users)
+            {
+                <h5 class="card-title">@user</h5>
+            }
+        }
+        else
+        {
+            <h5 class="card-title">No users in this role</h5>
+        }
+    </div>
+    <div class="card-footer">
+        <a asp-action="EditUsersInRole" asp-controller="AdminAccounts" asp-route-id="@Model.Id" class="btn btn-primary" style="width:auto">Add/Remove Users</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
