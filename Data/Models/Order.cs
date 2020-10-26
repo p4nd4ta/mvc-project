@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Drinks_Self_Learn.Data.Models
 {
@@ -70,5 +71,9 @@ namespace Drinks_Self_Learn.Data.Models
         [BindNever]
         [ScaffoldColumn(false)]
         public bool OrderProcessed { get; set; }
+
+        [BindNever]
+        [ScaffoldColumn(false)]
+        public virtual IdentityUser IdentityUser{ get; set; }
     }
 }
