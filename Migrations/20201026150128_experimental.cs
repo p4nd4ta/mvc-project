@@ -22,7 +22,7 @@ namespace Drinks_Self_Learn.Migrations
                 column: "IdentityUserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

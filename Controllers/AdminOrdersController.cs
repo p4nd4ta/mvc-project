@@ -10,6 +10,7 @@ using Drinks_Self_Learn.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Drinks_Self_Learn.Migrations;
 using System.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Drinks_Self_Learn.Controllers
 {
@@ -17,11 +18,13 @@ namespace Drinks_Self_Learn.Controllers
     public class AdminOrdersController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
         // here we don't demostrate the Repository Design Pattern, we are directly access the Db Context
 
-        public AdminOrdersController(AppDbContext context)
+        public AdminOrdersController(AppDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context; // inject the AppDbContext
+            _userManager = userManager;
         }
 
         // GET: OrdersAdmin
@@ -34,6 +37,15 @@ namespace Drinks_Self_Learn.Controllers
             return View(await _context.Orders.OrderByDescending(o => o.OrderPlaced).ToListAsync()); // and return to the "Index" View all items, sorted descending by the order date
         }
 
+        public async Task<IActionResult> IndexUser(string id)
+        {
+            var order = _context.Orders
+                        .Include(s => s.OrderLines)
+                        .AsNoTracking();
+            ViewBag.CUID = await _userManager.FindByIdAsync(id);
+            return View(await _context.Orders.OrderByDescending(o => o.OrderPlaced).Where(u => u.IdentityUser.Id == id).ToListAsync());
+        }
+
         // GET: OrdersAdmin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,7 +54,7 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders.Include(s => s.OrderLines)
+            var order = await _context.Orders.Include(s => s.OrderLines).Include(s=> s.IdentityUser)
                         .FirstOrDefaultAsync(m => m.OrderId == id); // based on the ID, search the db context and get the order with the same id
 
             if (order == null) // some more validation checks

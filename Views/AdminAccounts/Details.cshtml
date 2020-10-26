@@ -1,0 +1,37 @@
+﻿@model Drinks_Self_Learn.ViewModels.EditUserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RegisterViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2" >
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index" asp-controller="AdminAccounts">Back to List</a>
+</div>

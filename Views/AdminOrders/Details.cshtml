@@ -78,7 +78,7 @@
 			@Html.DisplayNameFor(model => model.IdentityUser.UserName)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdentityUser.UserName)
+			<a asp-controller="AdminAccounts" asp-action="Details" asp-route-id="@Model.IdentityUser.Id">@Html.DisplayFor(model => model.IdentityUser.UserName)</a>
 		</dd>
 	</dl>
 </div>
@@ -142,4 +142,6 @@
 		  }
 		  <br /><br />
 		  <a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
+		  <br />
+		  <a asp-action="IndexUser" asp-controller="AdminOrders" class="btn btn-primary" asp-route-id="@Model.IdentityUser.Id"><i class="fas fa-eye"></i>View All Orders From this User</a>
 	  </div>
