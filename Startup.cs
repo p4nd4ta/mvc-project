@@ -53,6 +53,11 @@ namespace Drinks_Self_Learn
                 configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); //added as a global filter, to be safe to some extend if we have missed something
             });
 
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                // enables immediate logout, after updating the user's stat.
+                options.ValidationInterval = TimeSpan.Zero;
+            });
 
             //Repositories
             services.AddTransient<IDrinkRepository, DrinkRepository>(); //Creates the service each time it is requested

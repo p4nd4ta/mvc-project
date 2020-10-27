@@ -135,6 +135,7 @@ namespace Drinks_Self_Learn.Controllers
             else
             {
                 await _userManager.SetLockoutEndDateAsync(user, DateTime.MaxValue);
+                await _userManager.UpdateSecurityStampAsync(user);
             }
 
             return RedirectToAction("EditUser", new { id = id });
