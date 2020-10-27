@@ -28,16 +28,16 @@
             </div>
             <div class="card-footer">
                <form asp-action="DeleteRole" asp-route-id="@item.Id" method="post">
-                <a asp-action="EditRole" asp-controller="AdminAccounts" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                   <a asp-action="EditRole" asp-controller="AdminAccounts" asp-route-id="@item.Id" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a>
                 
                 <span id="confirmDeleteSpan_@item.Id" style="display:none">
                     <span>Are you sure you want to delete?</span>
                     <button type="submit" class="btn btn-danger">Yes</button>
-                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@item.Id', false)">No</a>
+                    <a href="#" class="btn btn-success" onclick="confirmDelete('@item.Id', false)">No</a>
                 </span>
 
                 <span id="deleteSpan_@item.Id">
-                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@item.Id', true)">Delete</a>
+                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@item.Id', true)"><i class="fas fa-trash"></i> Delete</a>
                 </span>
                </form>
             </div>

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Drinks_Self_Learn.Controllers
 {
@@ -57,6 +59,22 @@ namespace Drinks_Self_Learn.Controllers
                 Roles = userRoles
             };
 
+            var result = await _userManager.IsLockedOutAsync(user);
+            var IsPermanent = await _userManager.GetLockoutEndDateAsync(user);
+
+            if (result)
+            {
+                ViewBag.LockOutStatusMessage = "Locked";
+            }
+            if(IsPermanent == DateTime.MaxValue)
+            {
+                ViewBag.LockOutStatusMessage = "Permanently Locked";
+            }
+            else
+            {
+                ViewBag.LockOutStatusMessage = "UnLocked";
+            }
+
             return View(model);
         }
         [HttpPost]
@@ -94,6 +112,35 @@ namespace Drinks_Self_Learn.Controllers
             }
         }
 
+        public async Task<IActionResult> LockUser(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userManager.IsLockedOutAsync(user);
+
+            if (result)
+            {
+                await _userManager.SetLockoutEndDateAsync(user, DateTime.Now);
+            }
+            else
+            {
+                await _userManager.SetLockoutEndDateAsync(user, DateTime.MaxValue);
+            }
+
+            return RedirectToAction("EditUser", new { id = id });
+        }
+
+
         public async Task<IActionResult> Details(string id)
         {
 
@@ -117,6 +164,23 @@ namespace Drinks_Self_Learn.Controllers
                 UserName = user.UserName,
                 Roles = userRoles
             };
+
+            var result = await _userManager.IsLockedOutAsync(user);
+            var IsPermanent = await _userManager.GetLockoutEndDateAsync(user);
+
+            if (result)
+            {
+                ViewBag.LockOutStatusMessage = "Locked";
+            }
+            if (IsPermanent == DateTime.MaxValue)
+            {
+                ViewBag.LockOutStatusMessage = "Permanently Locked";
+            }
+            else
+            {
+                ViewBag.LockOutStatusMessage = "UnLocked";
+            }
+
 
             return View(model);
         }

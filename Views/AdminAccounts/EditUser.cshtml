@@ -41,17 +41,42 @@
                     }
                 }
                 else
-                {       <center><h1 class="fas fa-id-card"></h1></center>
-                        <center><h5 class="card-title">None at the moment</h5></center>
+                { <center><h1 class="fas fa-id-card"></h1></center>
+                    <center><h5 class="card-title">None at the moment</h5></center>
                 }
             </div>
             <div class="card-footer">
-                <a asp-action="EditRolesInUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id" style="width:auto" class="btn btn-info">Manage Roles</a>
+                <a asp-action="EditRolesInUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id" style="width:auto" class="btn btn-info"><i class="fas fa-tasks"></i> Manage Roles</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>User Account Lockout</h4>
+            </div>
+            <div class="card-body">
+                @if (ViewBag.LockOutStatusMessage == "UnLocked")
+                {
+                    <h5>Current Status: <i class="text-success">@ViewBag.LockOutStatusMessage</i></h5>
+                }
+                else
+                {
+                    <h5>Current Status: <i class="text-danger">@ViewBag.LockOutStatusMessage</i></h5>
+                }
+            </div>
+            <div class="card-footer">
+                @if (ViewBag.LockOutStatusMessage == "UnLocked")
+                {
+                    <a asp-action="LockUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fas fa-lock"></i> Lock Account Permanently</a>
+                }
+                else
+                {
+                    <a asp-action="LockUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id" class="btn btn-success"><i class="fas fa-lock-open"></i> UnLock Account</a>
+                }
             </div>
         </div>
     </div>
 </div>
-
 <div>
     <a asp-action="Index" asp-controller="AdminAccounts" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to Users List</a>
 </div>
