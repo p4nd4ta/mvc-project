@@ -47,12 +47,14 @@ namespace Drinks_Self_Learn.Controllers
             {
                 return NotFound();
             }
-
+            var userRoles = await _userManager.GetRolesAsync(user);
+            //var userClaims = await _userManager.GetClaimsAsync(user);
             var model = new EditUserViewModel
             {
                 Id = user.Id,
                 Email = user.Email,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Roles = userRoles
             };
 
             return View(model);
@@ -94,6 +96,7 @@ namespace Drinks_Self_Learn.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -101,11 +104,18 @@ namespace Drinks_Self_Learn.Controllers
 
             var user = await _userManager.FindByIdAsync(id);
 
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var userRoles = await _userManager.GetRolesAsync(user);
+            //var userClaims = await _userManager.GetClaimsAsync(user);
             var model = new EditUserViewModel
             {
                 Id = user.Id,
                 Email = user.Email,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Roles = userRoles
             };
 
             return View(model);
@@ -255,10 +265,13 @@ namespace Drinks_Self_Learn.Controllers
                 {
                     return RedirectToAction("ListRoles");
                 }
-
-                foreach (IdentityError error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError("", error.Description);
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
                 }
             }
             return View(model);
@@ -367,6 +380,81 @@ namespace Drinks_Self_Learn.Controllers
                 return View("ListRoles");
             }
            
+        }
+
+        public async Task<IActionResult> EditRolesInUser(string id)
+        {
+            ViewBag.userId = id;
+            var user = await _userManager.FindByIdAsync(id);
+            var AllRoles = _roleManager.Roles;
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new List<EditRoleViewModel>();
+            foreach (var role in AllRoles)
+            {
+                var CRole = await _roleManager.FindByIdAsync(role.Id);
+                var editRoleVM = new EditRoleViewModel
+                {
+                    Id = CRole.Id,
+                    RoleName = CRole.Name
+                };
+
+                if (await _userManager.IsInRoleAsync(user, CRole.Name))
+                {
+                    editRoleVM.IsSelected = true;
+                }
+                else
+                {
+                    editRoleVM.IsSelected = false;
+                }
+
+                model.Add(editRoleVM);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditRolesInUser(List<EditRoleViewModel> model, string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            for (int i = 0; i < model.Count; i++)
+            {
+                var role = await _roleManager.FindByIdAsync(model[i].Id);
+
+                IdentityResult result = null;
+                if ((model[i].IsSelected) && !(await _userManager.IsInRoleAsync(user, role.Name)))
+                {
+                    result = await _userManager.AddToRoleAsync(user, role.Name);
+                }
+                else if (!(model[i].IsSelected) && (await _userManager.IsInRoleAsync(user, role.Name)))
+                {
+                    result = await _userManager.RemoveFromRoleAsync(user, role.Name);
+                }
+                else
+                {
+                    continue;
+                }
+
+                if (result.Succeeded)
+                {
+                    if (i < (model.Count - 1))
+                        continue;
+                    else
+                        return RedirectToAction("EditUser", new { id = id });
+                }
+            }
+
+            return RedirectToAction("EditUser", new { id = id });
         }
     }
 }

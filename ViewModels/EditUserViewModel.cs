@@ -12,6 +12,11 @@ namespace Drinks_Self_Learn.ViewModels
 {
     public class EditUserViewModel
     {
+        public EditUserViewModel()
+        {
+            Roles = new List<string>();
+            //Claims = new List<string>();
+        }
         public string Id { get; set; }
 
         [Required]
@@ -19,5 +24,8 @@ namespace Drinks_Self_Learn.ViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        public IList<string> Roles { get; set; }
+        //public IList<string> Claims { get; set; }
     }
 }

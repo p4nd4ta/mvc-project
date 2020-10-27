@@ -8,7 +8,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>RegisterViewModel</h4>
+    <h4>for User: @Model.UserName</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2" >
@@ -31,7 +31,29 @@
         </dd>
     </dl>
 </div>
+<div class="card">
+    <div class="card-header">
+        <h3>User Roles</h3>
+    </div>
+    <div class="card-body">
+        @if (Model.Roles.Any())
+        {
+            foreach (var role in Model.Roles)
+            {
+                <h5 class="card-title">@role</h5>
+            }
+        }
+        else
+        { <center><h1 class="fas fa-id-card"></h1></center>
+            <center><h5 class="card-title">None at the moment</h5></center>
+        }
+    </div>
+</div>
+<br />
+<br />
 <div>
-    <a asp-action="EditUser" asp-controller="AdminAccounts" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index" asp-controller="AdminAccounts">Back to List</a>
+    <a asp-action="Index" asp-controller="AdminAccounts"class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to Users List</a>
+    <a asp-action="IndexUser" asp-controller="AdminOrders" asp-route-id="@Model.Id" class="btn btn-info"><i class="fas fa-eye"></i> View All Orders From This User</a>
+    <a asp-action="EditUser" asp-route-id="@Model.Id" asp-controller="AdminAccounts" class="btn btn-secondary" style="width:auto"><i class="fas fa-edit"></i> Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" asp-controller="AdminAccounts" class="btn btn-danger" style="width:auto"><i class="fas fa-trash"></i> Delete</a>
 </div>

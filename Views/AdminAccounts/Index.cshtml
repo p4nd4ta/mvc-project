@@ -6,10 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Admin Panel - Users</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-primary"><i class="fas fa-home"></i> MAIN VIEW</a>
+    <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
+    <a asp-controller="AdminAccounts" asp-action="ListRoles" class="btn btn-warning"><i class="fas fa-id-badge"></i> Manage Roles</a>
+    <a asp-action="Register" asp-controller="Account" class="btn btn-success"><i class="fas fa-plus-square"></i> Create New User</a>
 </p>
 <table class="table">
     <thead>
@@ -40,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.AccessFailedCount)
             </td>
             <td>
-                <a asp-action="EditUser" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="EditUser" asp-route-id="@item.Id" asp-controller="AdminAccounts" class="btn btn-secondary" style="width:auto"><i class="fas fa-edit"></i> Edit</a> <br />
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="AdminAccounts" class="btn btn-info" style="width:auto"><i class="fas fa-info-circle"></i> Details</a> <br />
+                <a asp-action="Delete" asp-route-id="@item.Id" asp-controller="AdminAccounts" class="btn btn-danger" style="width:auto"><i class="fas fa-trash"></i> Delete</a>
             </td>
         </tr>
         }

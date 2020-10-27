@@ -127,7 +127,19 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="OrderId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> <br />
         <a asp-action="Index" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
+        <span id="confirmDeleteSpan_@Model.OrderId" style="display:none">
+            <span>Are you sure you want to delete?</span>
+            <button type="submit" class="btn btn-danger">Yes</button>
+            <a href="#" class="btn btn-primary" onclick="confirmDelete('@Model.OrderId', false)">No</a>
+        </span>
+
+        <span id="deleteSpan_@Model.OrderId">
+            <a href="#" class="btn btn-danger" onclick="confirmDelete('@Model.OrderId', true)">Delete</a>
+        </span>
     </form>
 </div>
+
+@section Scripts{
+    <script src="~/lib/js/DeleteScript.js"></script>
+}

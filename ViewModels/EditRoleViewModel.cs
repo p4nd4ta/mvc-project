@@ -18,5 +18,6 @@ namespace Drinks_Self_Learn.ViewModels
         public string RoleName { get; set; }
 
         public List<string> Users { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

@@ -54,6 +54,11 @@ namespace Drinks_Self_Learn.Controllers
                     }
                     return Redirect(loginViewModel.ReturnUrl);
                 }
+
+                if (result.IsLockedOut)
+                {
+                    return View("AccountLocked");
+                }
             }
             ModelState.AddModelError("UserName", "Username/Password not found !"); // the error message for credentials missmatch or not existing user
             return View(loginViewModel);

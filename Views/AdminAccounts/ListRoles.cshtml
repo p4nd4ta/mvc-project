@@ -5,9 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>All Roles</h1>
+<h1>Admin Panel - All Roles</h1>
 
-<a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="AdminAccounts"> Add new Role</a>
+<p>
+
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-primary"><i class="fas fa-home"></i> MAIN VIEW</a>
+    <a class="btn btn-success" style="width:auto" asp-action="CreateRole" asp-controller="AdminAccounts"><i class="fas fa-plus-square"></i> Create new Role</a>
+    <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
+    <a asp-controller="AdminAccounts" asp-action="Index" class="btn btn-warning"><i class="fas fa-users"></i> Manage Users</a>
+</p>
 
 @if (Model.Any())
 {
