@@ -1,0 +1,36 @@
+﻿@model Drinks_Self_Learn.ViewModels.DrinkListViewModel
+
+<div class="drink-introduction">
+    <form method="get" class="mt-3 mb-3" asp-action="Search" asp-controller="Drink" onsubmit="return CheckValidationSearch()">
+        <div class="input-group">
+            <input type="text" placeholder="Search..." class="form-control" name="searchTerm" id="searchTerm" />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<h2> <i class="fas fa-search"></i> Search results for: "@ViewBag.sTerm"</h2>
+
+@if (!Model.Drinks.Any())
+{
+    <h2>Nothing Found!</h2>
+}
+else
+{
+    <h4 class="mb-3 mt-2">Results found: @Model.Drinks.Count()</h4>
+    <div id="drink-container">
+
+
+        @foreach (Drink drink in Model.Drinks)
+        {
+            @await Html.PartialAsync("DrinksSummary", drink)
+        }
+
+    </div>
+}
+
+@section Scripts{
+    <script src="~/lib/js/SearchScript.js"></script>
+}

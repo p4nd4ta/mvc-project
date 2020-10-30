@@ -1,5 +1,13 @@
 ﻿<div class="drink-introduction">
     <h2>Enjoy our wide variety of drinks</h2>
+    <form method="get" class="mt-3 mb-3" asp-action="Search" asp-controller="Drink" id="searchForm" onsubmit="return CheckValidationSearch()">
+        <div class="input-group">
+            <input type="text" placeholder="Search..." class="form-control" name="searchTerm" id="searchTerm" />
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <h2> <i class="fas fa-glass-cheers"></i> @Model.CurrentCategory</h2>
@@ -7,7 +15,11 @@
 <div id="drink-container">
 
     @{ foreach (Drink drink in Model.Drinks)
-                    {
-        @await Html.PartialAsync("DrinksSummary", drink) } }
+        {
+            @await Html.PartialAsync("DrinksSummary", drink) } }
 
 </div>
+
+@section Scripts{
+    <script src="~/lib/js/SearchScript.js"></script>
+}

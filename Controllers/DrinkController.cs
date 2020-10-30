@@ -55,5 +55,21 @@ namespace Drinks_Self_Learn.Controllers
 
             return View(drinkListViewMidel);
         }
+
+        [HttpGet]
+        public IActionResult Search(string searchTerm)
+        {
+            if (searchTerm == null)
+            {
+                return RedirectToAction("List");
+            }
+
+            ViewBag.sTerm = searchTerm;
+            var drinksListViewModel = new DrinkListViewModel
+            { 
+                Drinks = _drinkRepository.SearchDrinks(searchTerm)
+            };
+            return View(drinksListViewModel);
+        }
     }
 }
