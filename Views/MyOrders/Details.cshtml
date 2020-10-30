@@ -4,8 +4,8 @@
     ViewData["Title"] = "Details";
 }
 @{
-    IEnumerable<Drink> drinks = ViewData["Drinks"] as IEnumerable<Drink>;
-    IEnumerable<OrderDetail> details = ViewData["Details"] as IEnumerable<OrderDetail>;
+    IEnumerable<Drink> drinksClient = ViewData["DrinksClient"] as IEnumerable<Drink>;
+    IEnumerable<OrderDetail> detailsClient = ViewData["DetailsClient"] as IEnumerable<OrderDetail>;
 }
 
 <h1>Details For My Order</h1>
@@ -84,14 +84,14 @@
         <td>Price</td>
         <td>Ammount</td>
     </tr>
-    @foreach (Drink drink in drinks)
+    @foreach (Drink drink in drinksClient)
     {
         <tr>
             <td>@drink.Name</td>
             <td>@drink.Price</td>
 
 
-            @foreach (OrderDetail od in details)
+            @foreach (OrderDetail od in detailsClient)
             {
                 @if (drink.DrinkId == od.DrinkId)
                 {

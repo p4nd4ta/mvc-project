@@ -63,8 +63,8 @@ namespace Drinks_Self_Learn.Controllers
             detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId)); //same thing as above, but here we get it done with a single query, retrieve the order details for the order with the same id
             // SELECT OD.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter
 
-            ViewData["Drinks"] = drinksList; // and to pass them to the view we use ViewData
-            ViewData["Details"] = detailsList;
+            ViewData["DrinksClient"] = drinksList; // and to pass them to the view we use ViewData
+            ViewData["DetailsClient"] = detailsList;
 
             return View(order);
         }
