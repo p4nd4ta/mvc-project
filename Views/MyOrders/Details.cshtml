@@ -1,0 +1,127 @@
+﻿@model Drinks_Self_Learn.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    IEnumerable<Drink> drinks = ViewData["Drinks"] as IEnumerable<Drink>;
+    IEnumerable<OrderDetail> details = ViewData["Details"] as IEnumerable<OrderDetail>;
+}
+
+<h1>Details For My Order</h1>
+
+<div>
+    <h4>Order ID: @Model.OrderId</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressLine1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressLine2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderPlaced)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderPlaced)
+        </dd>
+    </dl>
+</div>
+
+<h4>Ordered Items:</h4>
+<table border="1">
+    <tr class="bg-dark text-white font-weight-bold">
+        <td>Drink Name</td>
+        <td>Price</td>
+        <td>Ammount</td>
+    </tr>
+    @foreach (Drink drink in drinks)
+    {
+        <tr>
+            <td>@drink.Name</td>
+            <td>@drink.Price</td>
+
+
+            @foreach (OrderDetail od in details)
+            {
+                @if (drink.DrinkId == od.DrinkId)
+                {
+                    <td> x @od.Amount</td>
+                }
+            }
+        </tr>
+    }
+    <tfoot>
+        <tr class="bg-dark text-white font-weight-bold">
+            <td>Order Total:</td>
+            <td>@Model.OrderTotal</td>
+        </tr>
+    </tfoot>
+</table>
+
+<br />
+<br />
+<div>
+    <div>
+        <h3 class="fas fa-people-carry"></h3> <h4> Current Status of My Order: </h4>
+        @if (!Model.OrderProcessed)
+        {
+            <strong class="text-danger"><i class="fas fa-dot-circle"></i> Unprocessed</strong>
+        }
+        else
+        {
+            <strong class="text-success"><i class="fas fa-dot-circle"></i> Processed</strong>
+        }
+    </div>
+    <br /><br />
+    <a asp-action="Index" asp-controller="MyOrders" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
+</div>

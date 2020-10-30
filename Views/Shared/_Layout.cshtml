@@ -40,8 +40,13 @@
                     <a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
                 @await Component.InvokeAsync("ShoppingCartSummary")
-                
 
+                @if (this.User.Identity.IsAuthenticated && !(this.User.IsInRole("Administrator")))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="MyOrders" asp-action="Index">My Orders</a>
+                    </li>
+                }
 
                 @if (this.User.IsInRole("Administrator"))
                 {
