@@ -9,7 +9,7 @@ namespace Drinks_Self_Learn.Data.Interfaces
     public interface IDrinkRepository
     {
         IEnumerable<Drink> Drinks { get; } //get all Drinks
-        IEnumerable<Drink> SearchDrinks(string searchTerm); //get all Drinks
+        IEnumerable<Drink> SearchDrinks(string searchTerm); //get all Drinks based on the search term provided
         IEnumerable<Drink> PreferredDrinks { get; } //get only the Preffered Drinks, that are shown on the homepage
         Drink GetDrinkById (int drinkId); //return drink object based on it's id
 

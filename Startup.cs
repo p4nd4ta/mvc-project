@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Drinks_Self_Learn.Data;
 using Drinks_Self_Learn.Data.Interfaces;
 using Drinks_Self_Learn.Data.Models;
@@ -63,6 +64,7 @@ namespace Drinks_Self_Learn
             services.AddTransient<IDrinkRepository, DrinkRepository>(); //Creates the service each time it is requested
             services.AddTransient<ICategoryRepository, CategoryRepository>(); //
             services.AddTransient<IOrderRepository, OrderRepository>(); //
+            services.AddTransient<ICommentsRepository, CommentsRepository>(); //
             //
 
             /** Note About The Application Design
@@ -121,6 +123,7 @@ namespace Drinks_Self_Learn
             app.UseMvc(routes =>
             {
                 routes.MapRoute("categoryFilter", "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
+                routes.MapRoute("DrinkDetails", "Drink/Details/{id:int}", defaults: new { Controller = "Drink", action = "Details" });
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 

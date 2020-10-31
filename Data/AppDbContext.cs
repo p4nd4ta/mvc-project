@@ -21,5 +21,6 @@ namespace Drinks_Self_Learn.Data
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Comments> Comments { get; set; }
     }
 }

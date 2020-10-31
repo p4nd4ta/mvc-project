@@ -1,6 +1,7 @@
 ﻿using Drinks_Self_Learn.Data.Interfaces;
 using Drinks_Self_Learn.Data.Models;
 using Drinks_Self_Learn.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using System;
@@ -14,10 +15,14 @@ namespace Drinks_Self_Learn.Controllers
     {
         private readonly ICategoryRepository _categoryRepository; //we get the data for the categories through the interface for the repository
         private readonly IDrinkRepository _drinkRepository;
+        private readonly ICommentsRepository _commentsRepository;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DrinkController(ICategoryRepository categoryRepository, IDrinkRepository drinkRepository)
+        public DrinkController(ICategoryRepository categoryRepository, IDrinkRepository drinkRepository, ICommentsRepository commentsRepository, UserManager<IdentityUser> userManager)
         {
             _categoryRepository = categoryRepository;
+            _commentsRepository = commentsRepository;
+            _userManager = userManager;
             _drinkRepository = drinkRepository; //dependency injection
         }
 
@@ -71,5 +76,24 @@ namespace Drinks_Self_Learn.Controllers
             };
             return View(drinksListViewModel);
         }
+
+        //[HttpGet("/Drink/Details/{id:int}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id);
+            var drink = _drinkRepository.GetDrinkById(id);
+            if (drink == null)
+            {
+                return NotFound();
+            }
+            DrinkDetailsViewModel DdVM = new DrinkDetailsViewModel
+            {
+                Drink = drink,
+                Comments = commentsList,
+            };
+
+            return View(DdVM);
+        }
+
     }
 }
