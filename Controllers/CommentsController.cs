@@ -51,10 +51,10 @@ namespace Drinks_Self_Learn.Controllers
                     Approved=true,
                 };
 
-               await _commentsRepository.WriteComment(Nc);
+                await _commentsRepository.WriteComment(Nc);
                 return RedirectToAction("Details", "Drink", new { id = dtVM.Drink.DrinkId });
             }
-            return RedirectToAction("List", "Drink");//, new { id = dtVM.Drink.DrinkId });
+            return RedirectToAction("List", "Drink");
         }
 
         // Administration bellow
@@ -64,6 +64,22 @@ namespace Drinks_Self_Learn.Controllers
         public IActionResult Index()
         {
            IEnumerable<Comments>CommentsList=_commentsRepository.GetAllComments;
+            return View(CommentsList);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult ListApproved()
+        {
+            IEnumerable<Comments> CommentsList = _commentsRepository.GetApprovedComments;
+            return View(CommentsList);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult ListUnapproved()
+        {
+            IEnumerable<Comments> CommentsList = _commentsRepository.GetUnapprovedComments;
             return View(CommentsList);
         }
 
@@ -165,7 +181,7 @@ namespace Drinks_Self_Learn.Controllers
                 Drink = comment.Drink,
             };
 
-            return View(comment);
+            return View(edVm);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -188,6 +204,7 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult ChangeStatus(int id)
         {
 
@@ -212,6 +229,7 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult ChangeStatusInt(int id)
         {
 
@@ -255,5 +273,25 @@ namespace Drinks_Self_Learn.Controllers
             return RedirectToAction("Details", "Drink", new { id = drId});
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Details(int id)
+        {
+            var comment = _commentsRepository.GetCommentById(id);
+            if (comment == null)
+                return NotFound();
+
+            CommentViewModel cmVM = new CommentViewModel
+            {
+                CommentDate = comment.CommentDate,
+                CommentText = comment.CommentText,
+                Drink = comment.Drink,
+                Id = comment.Id,
+                UserName = comment.UserName,
+                IdentityUser = comment.IdentityUser
+            };
+
+            return View(cmVM);
+        }
     }
 }

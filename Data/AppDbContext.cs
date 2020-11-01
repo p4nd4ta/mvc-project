@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Drinks_Self_Learn.ViewModels;
 
 namespace Drinks_Self_Learn.Data
 {
@@ -22,5 +23,6 @@ namespace Drinks_Self_Learn.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Comments> Comments { get; set; }
+        public DbSet<Drinks_Self_Learn.ViewModels.CommentViewModel> CommentViewModel { get; set; }
     }
 }

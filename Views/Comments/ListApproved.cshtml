@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Comments>
+
+<h1>Admin Panel - Comments</h1>
+<h2>All <u>Approved</u> Comments</h2>
+
+
+<div class="btn-group">
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-primary"><i class="fas fa-home"></i> MAIN VIEW</a>
+    <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
+    <a asp-controller="AdminAccounts" asp-action="Index" class="btn btn-warning"><i class="fas fa-users"></i> Manage Users</a>
+    <a asp-controller="AdminAccounts" asp-action="ListRoles" class="btn btn-warning"><i class="fas fa-id-badge"></i> Manage Roles</a>
+    <a type="button" class="btn btn-secondary" asp-controller="Comments" asp-action="Index"><i class="fas fa-comments"></i> View All Comments</a>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" asp-controller="Comments" asp-action="ListApproved">Approved Comments</a>
+        <a class="dropdown-item" asp-controller="Comments" asp-action="ListUnapproved">UnApproved Commnets</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drink.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentText)
+            </th>
+            <th>Approved</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr class="bg-primary text-white">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Drink.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentText)
+                    </td>
+                    <td class="text-danger"><i class="fas fa-dot-circle"></i> Unapproved</td>
+                    <td class="btn-group-sm">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fas fa-info-circle"></i> Details</a>
+                        <a asp-action="ChangeStatus" asp-controller="Comments" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-times"></i> UnApprove</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

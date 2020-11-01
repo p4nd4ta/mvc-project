@@ -32,11 +32,11 @@
 @if (this.User.Identity.IsAuthenticated)
 {
     <div>
-        <form asp-action="New" asp-controller="Comments" method="post" class="mt-2">
+        <form asp-action="New" asp-controller="Comments" method="post" class="mt-2" id="form-for-newComment">
             @Html.HiddenFor(m => m.Drink.DrinkId)
-            <textarea data-val="true" data-val-required="The NewCommentText field is required." id="NewCommentText" name="NewCommentText" class="form-control"></textarea>
-            <span asp-validation-for="NewCommentText" class="text-danger"></span>
-            <input type="submit" value="Comment">
+            <textarea id="NewCommentText" name="NewCommentText" class="form-control"></textarea>
+            <span class="text-danger field-validation-valid" id="comment-validation"></span>
+            <a class="btn btn-primary mt-1 mb-1" onclick="CheckValidationComment()"><i class="fas fa-comment"></i> Comment</a>
         </form>
     </div>
 }
@@ -63,14 +63,14 @@ else
                     <div class="card-footer">
                         @if (comm.Approved == true)
                         {
-                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i>Change Status</a>
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i> Change Status</a>
                         }
                         else
                         {
-                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i>Change Status</a>
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i> Change Status</a>
                         }
-                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning">Edit</a>
-                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post">
+                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post" class="d-inline-flex">
                             <span id="confirmDeleteSpan_@comm.Id" style="display:none">
                                 <span>Are you sure you want to delete?</span>
                                 <button type="submit" class="btn btn-danger">Yes</button>
@@ -95,14 +95,14 @@ else
                     <div class="card-footer">
                         @if (comm.Approved == true)
                         {
-                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i>Change Status</a>
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i> Change Status</a>
                         }
                         else
                         {
-                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i>Change Status</a>
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i> Change Status</a>
                         }
-                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning">Edit</a>
-                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post">
+                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post" class="d-inline-flex">
                             <span id="confirmDeleteSpan_@comm.Id" style="display:none">
                                 <span>Are you sure you want to delete?</span>
                                 <button type="submit" class="btn btn-danger">Yes</button>
@@ -146,4 +146,5 @@ else
 
 @section Scripts{
     <script src="~/lib/js/DeleteScript.js"></script>
+    <script src="~/lib/js/CommentScript.js"></script>
 }

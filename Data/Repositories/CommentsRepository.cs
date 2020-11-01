@@ -23,11 +23,11 @@ namespace Drinks_Self_Learn.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<Comments> GetAllComments => _context.Comments.ToList();
+        public IEnumerable<Comments> GetAllComments => _context.Comments.Include(d => d.Drink).ToList();
 
-        public IEnumerable<Comments> GetUnapprovedComments => _context.Comments.Where(c => c.Approved == false).OrderByDescending(c=>c.CommentDate).ToList();
+        public IEnumerable<Comments> GetUnapprovedComments => _context.Comments.Where(c => c.Approved == false).Include(d => d.Drink).OrderByDescending(c=>c.CommentDate).ToList();
 
-        public IEnumerable<Comments> GetApprovedComments => _context.Comments.Where(c => c.Approved == true).OrderByDescending(c => c.CommentDate).ToList();
+        public IEnumerable<Comments> GetApprovedComments => _context.Comments.Where(c => c.Approved == true).Include(d => d.Drink).OrderByDescending(c => c.CommentDate).ToList();
         public Comments GetCommentById(int id) => _context.Comments.Include(d=>d.Drink).FirstOrDefault(c => c.Id == id);
 
         public void ChangeApprovalState(Comments comment, bool aState)

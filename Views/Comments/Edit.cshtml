@@ -17,7 +17,6 @@
             <input asp-for="CommentDate" type="hidden" class="form-control" />
             <div class="form-group">
                 <label asp-for="CommentText" class="control-label"></label>
-                @*<textarea data-val="true" data-val-required="The NewCommentText field is required." id="CommentText" name="CommentText" class="form-control"></textarea>*@
                 <textarea asp-for="CommentText" class="form-control"></textarea>
                 <span asp-validation-for="CommentText" class="text-danger"></span>
             </div>
