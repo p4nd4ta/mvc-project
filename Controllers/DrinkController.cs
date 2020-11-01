@@ -86,10 +86,16 @@ namespace Drinks_Self_Learn.Controllers
             {
                 return NotFound();
             }
+
+            string[] imgUrls;
+            string urls = drink.ImageSlideShowUrls;
+            imgUrls = urls.Split(';');
+
             DrinkDetailsViewModel DdVM = new DrinkDetailsViewModel
             {
                 Drink = drink,
                 Comments = commentsList,
+                ImgUrlsArr = imgUrls
             };
 
             return View(DdVM);

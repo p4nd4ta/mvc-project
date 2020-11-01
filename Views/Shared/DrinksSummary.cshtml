@@ -2,29 +2,42 @@
 @*The Drink "card" partial view which is displayed in the drinks list and homepage*@
 
 <div class="drink-card">
-            <div class="img-thumbnail">
-                <img id="drink-image" width="200" height="200" src="@Model.ImageThumbnailUrl" alt="drink image" />
-                <div class="figure-caption">
-                    <h3 class="float-right">@Model.Price.ToString("c")</h3>
-                    <h3><a asp-action="Details" asp-controller="Drink" asp-route-id="@Model.DrinkId">@Model.Name</a></h3>
-                    <p>@Model.ShortDescription</p>
+    <div class="img-thumbnail">
+        <img id="drink-image" width="200" height="200" src="@Model.ImageThumbnailUrl" alt="drink image" />
+        <div class="figure-caption">
+            <h3 class="float-right">@Model.Price.ToString("c")</h3>
+            <h3><a asp-action="Details" asp-controller="Drink" asp-route-id="@Model.DrinkId">@Model.Name</a></h3>
+            <p>@Model.ShortDescription</p>
 
-                    @if (Model.InStock)
-                    {
-                        <p class="text-success">In stock</p>
-                    }
-                    else
-                    {
-                        <p class="text-danger">Out of stock</p>
-                    }
-                </div>
-            </div>
-            
-            <div class="addToCart text-right">
-                <p class="btn">
-                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.DrinkId">
+            @if (Model.InStock)
+            {
+                <p class="text-success">In stock</p>
+            }
+            else
+            {
+                <p class="text-danger">Out of stock</p>
+            }
+        </div>
+    </div>
+
+    @if (Model.InStock)
+    {
+        <div class="addToCart text-right">
+            <p class="btn">
+                <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.DrinkId">
                     Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
-                    </a>
-                </p>
-            </div>
+                </a>
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="addToCart text-right">
+            <p class="btn">
+                <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.DrinkId">
+                    Preorder &nbsp;<i class="fas fa-truck-loading"></i>
+                </a>
+            </p>
+        </div>
+    }
 </div>

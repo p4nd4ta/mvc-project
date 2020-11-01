@@ -6,26 +6,65 @@
         <h2>@Model.Drink.Name</h2>
     </div>
     <div>
-        <img src="@Model.Drink.ImageThumbnailUrl" alt="drinkImage" />
-        <br />
-        <p class="mt-2">@Model.Drink.ShortDescription</p>
+
+        <div class="row carousel-holder marginTop1">
+            <div class="col-md-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        @for (int i = 1; i < Model.ImgUrlsArr.Length; i++)
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="slide-image" src="@Model.ImgUrlsArr[0]" alt="">
+                        </div>
+                        @for (int i = 1; i < Model.ImgUrlsArr.Length; i++)
+                        {
+                            <div class="carousel-item">
+                                <img class="slide-image" src="@Model.ImgUrlsArr[i]" alt="">
+                            </div>
+                        }
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-2">@Model.Drink.LongDescription</p>
     </div>
     <div class="card-footer">
         @if (Model.Drink.InStock)
         {
-            <p class="text-success text-left">In stock</p>
+            <strong class="text-success text-left">In stock</strong>
+            <div class="addToCart text-right">
+                <p class="btn">
+                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
+                        Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
+                    </a>
+                </p>
+            </div>
         }
         else
         {
-            <p class="text-danger text-left">Out of stock</p>
+            <strong class="text-danger text-left">Out of stock</strong>
+            <div class="addToCart text-right">
+                <p class="btn">
+                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
+                        Preorder &nbsp;<i class="fas fa-truck-loading"></i>
+                    </a>
+                </p>
+            </div>
         }
-        <div class="addToCart text-right">
-            <p class="btn">
-                <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
-                    Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
-                </a>
-            </p>
-        </div>
     </div>
 </div>
 

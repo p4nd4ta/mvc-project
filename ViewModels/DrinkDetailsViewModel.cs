@@ -13,6 +13,8 @@ namespace Drinks_Self_Learn.ViewModels
     {
         public Drink Drink { get; set; }
 
+        public string[] ImgUrlsArr{ get; set; }
+
         public IEnumerable<Comments> Comments { get; set; }
         public List<IdentityUser> Users { get; set; }
         [Required]

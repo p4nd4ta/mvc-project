@@ -33,7 +33,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/shumensko.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/shumensko.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Shumensko (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -43,7 +45,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/black-label.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/black-label.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Johnnie Walker Black Label, 12 Year Old (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -53,7 +57,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/burgas-63.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/burgas-63.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Burgas 63 is undoubtedly one of the best Bulgarian rakias (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -63,7 +69,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/jack-daniels.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/jack-daniels.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Jack Daniels, Old No. 7 (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -73,7 +81,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/ot-mazeto.jpeg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/ot-mazeto.jpeg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Rakia from the Basement (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -83,7 +93,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/pirinsko.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/pirinsko.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Pirinsko Svetlo (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -93,7 +105,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/red-label.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/red-label.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Johnhie Walker Red Label (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -103,17 +117,21 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/rus.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/rus.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Russian Standard - Vodka (Placeholder Description)"
                     },
                     new Drink
                     {
-                        Name = "Savoy Vodka ",
+                        Name = "Savoy Vodka",
                         Price = 10.15M,
                         ShortDescription = "Vodka Savoy is crystal clear and is perfect as a base for original cocktails, as well as on the rocks.",
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/savoy.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/savoy.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Savoy Vodka (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -123,7 +141,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Alcoholic"],
                         InStock = false,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/smirnoff.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Alcoholic/smirnoff.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Smirnoff Vodka - Red 1L (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -133,17 +153,21 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cola.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cola.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Coca Cola (Placeholder Description)"
                     },
                     new Drink
                     {
-                        Name = "Cappy Orange ",
+                        Name = "Cappy Orange",
                         Price = 2.95M,
                         ShortDescription = "Natural juice Cappy - orange.",
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cappy-orange.jpeg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/cappy-orange.jpeg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Cappy Orange (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -153,7 +177,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/monster.jpg"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/monster.jpg",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Monster Energy (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -163,7 +189,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell1.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell1.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Summer Cool Mangosteen Pomelo (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -173,7 +201,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell2.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell2.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Summer Cool Black Cherry (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -183,7 +213,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell3.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell3.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Classic Plus (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -193,7 +225,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell4.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell4.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Summer Cool White Peach (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -203,7 +237,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell5.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell5.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Zero (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -213,7 +249,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell6.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell6.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Multi + (Placeholder Description)"
                     },
                     new Drink
                     {
@@ -223,7 +261,9 @@ namespace Drinks_Self_Learn.Data
                         Category = Categories["Non-alcoholic"],
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell7.png"
+                        ImageThumbnailUrl = "/Images/Drinks/Non-Alcoholic/hell7.png",
+                        ImageSlideShowUrls = "/Images/Drinks/PlaceholderImages/placeholder-img1.png;/Images/Drinks/PlaceholderImages/placeholder-img2.png;/Images/Drinks/PlaceholderImages/placeholder-img3.png;/Images/Drinks/PlaceholderImages/placeholder-img4.png",
+                        LongDescription = "This is Hell Ice Cool Cherry-Grape (Placeholder Description)"
                     }
                 );
             }
