@@ -77,7 +77,7 @@ namespace Drinks_Self_Learn.Controllers
             return View(drinksListViewModel);
         }
 
-        //[HttpGet("/Drink/Details/{id:int}")]
+        [HttpGet("/Drink/Details/{id:int}")]
         public async Task<IActionResult> Details(int id)
         {
             IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id);

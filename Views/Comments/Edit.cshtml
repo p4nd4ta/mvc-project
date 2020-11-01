@@ -1,0 +1,37 @@
+﻿@model Drinks_Self_Learn.ViewModels.CommentViewModel
+
+<h1>Edit Comment</h1>
+
+<h4>Posted by User: @Model.UserName</h4>
+<h5>Comment ID: @Model.Id</h5>
+<h5>For Product: @Model.Drink.Name</h5>
+<h5>Posted at: @Model.CommentDate</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditInt" asp-controller="Comments">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="UserName" type="hidden" class="form-control" />
+            <input asp-for="Id" type="hidden" class="form-control" />
+            <input asp-for="Drink.DrinkId" type="hidden" class="form-control" />
+            <input asp-for="CommentDate" type="hidden" class="form-control" />
+            <div class="form-group">
+                <label asp-for="CommentText" class="control-label"></label>
+                @*<textarea data-val="true" data-val-required="The NewCommentText field is required." id="CommentText" name="CommentText" class="form-control"></textarea>*@
+                <textarea asp-for="CommentText" class="form-control"></textarea>
+                <span asp-validation-for="CommentText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <br /><a asp-action="Index" asp-controller="Comments" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

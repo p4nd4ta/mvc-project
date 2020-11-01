@@ -79,16 +79,17 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
 
-            CommentViewModel edVm = new CommentViewModel
+            CommentViewModel edVM = new CommentViewModel
             {
                 Id = comment.Id,
                 CommentDate = comment.CommentDate,
                 CommentText = comment.CommentText,
                 Drink = comment.Drink,
-                IdentityUser = comment.IdentityUser
+                UserName = comment.UserName
+                
             };
 
-            return View(comment);
+            return View(edVM);
         }
 
 
@@ -99,18 +100,45 @@ namespace Drinks_Self_Learn.Controllers
         {
             if (ModelState.IsValid)
             {
+                var drink = _drinkRepository.GetDrinkById(edVM.Drink.DrinkId);
+                Comments edited = new Comments
+                {
+                    Id = edVM.Id,
+                    CommentDate = edVM.CommentDate,
+                    CommentText = edVM.CommentText,
+                    UserName = edVM.UserName,
+                    Drink = drink,
+                };
+
+                _commentsRepository.EditComment(edited);
+                return RedirectToAction("Index");
+            }
+
+            return View(edVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult EditInt(CommentViewModel edVM)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var drink = _drinkRepository.GetDrinkById(edVM.Drink.DrinkId);
 
                 Comments edited = new Comments
                 {
                     Id = edVM.Id,
                     CommentDate = edVM.CommentDate,
                     CommentText = edVM.CommentText,
-                    Drink = edVM.Drink,
-                    IdentityUser = edVM.IdentityUser
+                    UserName = edVM.UserName,
+                    Drink = drink,
                 };
 
+
                 _commentsRepository.EditComment(edited);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Drink", new { id = edited.Drink.DrinkId });
             }
 
             return View(edVM);
@@ -133,8 +161,8 @@ namespace Drinks_Self_Learn.Controllers
                 Id = comment.Id,
                 CommentDate = comment.CommentDate,
                 CommentText = comment.CommentText,
+                UserName = comment.UserName,
                 Drink = comment.Drink,
-                IdentityUser = comment.IdentityUser
             };
 
             return View(comment);
@@ -205,6 +233,26 @@ namespace Drinks_Self_Learn.Controllers
             }
 
             return RedirectToAction("Details","Drink",new { id = comment.Drink.DrinkId});
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult DeleteInt(int id)
+        {
+
+
+            var comment = _commentsRepository.GetCommentById(id);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+            var drId = comment.Drink.DrinkId;
+            _commentsRepository.DeleteComment(comment);
+
+            return RedirectToAction("Details", "Drink", new { id = drId});
         }
 
     }

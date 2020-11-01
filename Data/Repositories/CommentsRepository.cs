@@ -28,7 +28,7 @@ namespace Drinks_Self_Learn.Data.Repositories
         public IEnumerable<Comments> GetUnapprovedComments => _context.Comments.Where(c => c.Approved == false).OrderByDescending(c=>c.CommentDate).ToList();
 
         public IEnumerable<Comments> GetApprovedComments => _context.Comments.Where(c => c.Approved == true).OrderByDescending(c => c.CommentDate).ToList();
-        public Comments GetCommentById(int id) => _context.Comments.FirstOrDefault(c => c.Id == id);
+        public Comments GetCommentById(int id) => _context.Comments.Include(d=>d.Drink).FirstOrDefault(c => c.Id == id);
 
         public void ChangeApprovalState(Comments comment, bool aState)
         {
@@ -75,7 +75,8 @@ namespace Drinks_Self_Learn.Data.Repositories
            return newComment;
         }
         [AllowAnonymous]
-        public async Task<IEnumerable<Comments>> GetCommentsForDrink(int drinkId) => await _context.Comments.Where(c => c.Drink.DrinkId == drinkId && c.Approved == true).ToListAsync(); //gets only the approved comments
+        public async Task<IEnumerable<Comments>> GetCommentsForDrink(int drinkId) => await _context.Comments.Where(c => c.Drink.DrinkId == drinkId).ToListAsync(); //gets only the approved comments
+        //public async Task<IEnumerable<Comments>> GetCommentsForDrinkApproved(int drinkId) => await _context.Comments.Where(c => c.Drink.DrinkId == drinkId && c.Approved == true).ToListAsync(); //gets only the approved comments
 
     }
 }

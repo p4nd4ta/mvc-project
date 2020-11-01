@@ -2,88 +2,148 @@
 
 
 <div class="card">
-	<div class="card-header">
-		<h2>@Model.Drink.Name</h2>
-	</div>
-	<div>
-		<img src="@Model.Drink.ImageThumbnailUrl" alt="drinkImage" />
-		<br />
-		<p class="mt-2">@Model.Drink.ShortDescription</p>
-	</div>
-	<div class="card-footer">
-		@if (Model.Drink.InStock)
-		{
-			<p class="text-success text-left">In stock</p>
-		}
-		else
-		{
-			<p class="text-danger text-left">Out of stock</p>
-		}
-		<div class="addToCart text-right">
-			<p class="btn">
-				<a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
-					Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
-				</a>
-			</p>
-		</div>
-	</div>
+    <div class="card-header">
+        <h2>@Model.Drink.Name</h2>
+    </div>
+    <div>
+        <img src="@Model.Drink.ImageThumbnailUrl" alt="drinkImage" />
+        <br />
+        <p class="mt-2">@Model.Drink.ShortDescription</p>
+    </div>
+    <div class="card-footer">
+        @if (Model.Drink.InStock)
+        {
+            <p class="text-success text-left">In stock</p>
+        }
+        else
+        {
+            <p class="text-danger text-left">Out of stock</p>
+        }
+        <div class="addToCart text-right">
+            <p class="btn">
+                <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
+                    Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
+                </a>
+            </p>
+        </div>
+    </div>
 </div>
 
 @if (this.User.Identity.IsAuthenticated)
 {
-	<div>
-		<form asp-action="New" asp-controller="Comments" method="post" class="mt-2">
-			@Html.HiddenFor(m => m.Drink.DrinkId)
-			<textarea data-val="true" data-val-required="The NewCommentText field is required." id="NewCommentText" name="NewCommentText" class="form-control"></textarea>
-			<span asp-validation-for="NewCommentText" class="text-danger"></span>
-			<input type="submit" value="Comment">
-		</form>
-	</div>
+    <div>
+        <form asp-action="New" asp-controller="Comments" method="post" class="mt-2">
+            @Html.HiddenFor(m => m.Drink.DrinkId)
+            <textarea data-val="true" data-val-required="The NewCommentText field is required." id="NewCommentText" name="NewCommentText" class="form-control"></textarea>
+            <span asp-validation-for="NewCommentText" class="text-danger"></span>
+            <input type="submit" value="Comment">
+        </form>
+    </div>
 }
 else
 {
-	<div class="card">
-		<div class="card-header"><h5>UnAuthenticated!</h5></div>
-		<div class="card-body"><h6 class="text-danger">Login in order to post comments</h6></div>
-	</div>
+    <div class="card">
+        <div class="card-header"><h5>UnAuthenticated!</h5></div>
+        <div class="card-body"><h6 class="text-danger">Login in order to post comments</h6></div>
+    </div>
 }
 @if (this.User.IsInRole("Administrator"))
 {
-	<div>
-		@foreach (Comments comm in Model.Comments)
-		{
-			<div class="card mt-1">
-				<div class="card-header">
-					<strong class="float-left">UserName: @comm.IdentityUser.UserName</strong>
-					<i class="text-right">Posted at: @comm.CommentDate</i>
-				</div>
-				<div class="card-body"><p>@comm.CommentText</p></div>
-				<div class="card-footer">
-					<a asp-action="Delete" asp-controller="Comments" asp-route-id="@comm.Id">Remove</a>
-					<a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id">Edit</a>
-					<a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id">Change Status</a>
-				</div>
-			</div>
-		}
+    <div>
+        @foreach (Comments comm in Model.Comments)
+        {
+            if (comm.Approved == false)
+            {
+                <div class="card mt-1 border-danger">
+                    <div class="card-header">
+                        <strong class="float-left">UserName: @comm.UserName</strong>
+                        <i class="float-right">Posted at: @comm.CommentDate</i>
+                    </div>
+                    <div class="card-body"><p>@comm.CommentText</p></div>
+                    <div class="card-footer">
+                        @if (comm.Approved == true)
+                        {
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i>Change Status</a>
+                        }
+                        else
+                        {
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i>Change Status</a>
+                        }
+                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning">Edit</a>
+                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post">
+                            <span id="confirmDeleteSpan_@comm.Id" style="display:none">
+                                <span>Are you sure you want to delete?</span>
+                                <button type="submit" class="btn btn-danger">Yes</button>
+                                <a class="btn btn-success" onclick="confirmDelete('@comm.Id', false)">No</a>
+                            </span>
 
-	</div>
-	
+                            <span id="deleteSpan_@comm.Id">
+                                <a class="btn btn-danger" onclick="confirmDelete('@comm.Id', true)"><i class="fas fa-trash"></i> Delete</a>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            }
+                else
+            {
+                <div class="card mt-1 border-success">
+                    <div class="card-header">
+                        <strong class="float-left">UserName: @comm.UserName</strong>
+                        <i class="float-right">Posted at: @comm.CommentDate</i>
+                    </div>
+                    <div class="card-body"><p>@comm.CommentText</p></div>
+                    <div class="card-footer">
+                        @if (comm.Approved == true)
+                        {
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-danger"><i class="fas fa-times"></i>Change Status</a>
+                        }
+                        else
+                        {
+                            <a asp-action="ChangeStatusInt" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-success"><i class="fas fa-check"></i>Change Status</a>
+                        }
+                        <a asp-action="Edit" asp-controller="Comments" asp-route-id="@comm.Id" class="btn btn-warning">Edit</a>
+                        <form asp-action="DeleteInt" asp-controller="Comments" asp-route-id="@comm.Id" method="post">
+                            <span id="confirmDeleteSpan_@comm.Id" style="display:none">
+                                <span>Are you sure you want to delete?</span>
+                                <button type="submit" class="btn btn-danger">Yes</button>
+                                <a class="btn btn-success" onclick="confirmDelete('@comm.Id', false)">No</a>
+                            </span>
+
+                            <span id="deleteSpan_@comm.Id">
+                                <a class="btn btn-danger" onclick="confirmDelete('@comm.Id', true)"><i class="fas fa-trash"></i> Delete</a>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+
 }
-else
+@if(!this.User.IsInRole("Administrator"))
 {
-<div>
-	@foreach (Comments comm in Model.Comments)
-	{
-		<div class="card mt-1">
-			<div class="card-header">
-					<strong class="float-left">UserName: @comm.UserName</strong>
-				<i class="float-right">Posted at: @comm.CommentDate</i>
-			</div>
-			<div class="card-body">
-				<p>@comm.CommentText</p>
-			</div>
-		</div>
-	}
+    <div>
+        @foreach (Comments comm in Model.Comments)
+        {
+            if (comm.Approved == true)
+            {
+                <div class="card mt-1">
+                    <div class="card-header">
+                        <strong class="float-left">UserName: @comm.UserName</strong>
+                        <i class="float-right">Posted at: @comm.CommentDate</i>
+                    </div>
+                    <div class="card-body">
+                        <p>@comm.CommentText</p>
+                    </div>
+                </div>
+            }
+        }
 
-</div>
+    </div>
+}
+
+
+@section Scripts{
+    <script src="~/lib/js/DeleteScript.js"></script>
 }

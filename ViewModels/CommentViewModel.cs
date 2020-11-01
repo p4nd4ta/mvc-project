@@ -16,6 +16,7 @@ namespace Drinks_Self_Learn.ViewModels
         [MaxLength(200)]
         public string CommentText { get; set; }
         public DateTime CommentDate { get; set; }
+        public string UserName { get; set; }
 
         public virtual IdentityUser IdentityUser { get; set; }
         public virtual Drink Drink { get; set; }
