@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Drinks_Self_Learn.Data;
 using Drinks_Self_Learn.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Drinks_Self_Learn.ViewModels;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Drinks_Self_Learn.Controllers
 {
@@ -61,17 +63,38 @@ namespace Drinks_Self_Learn.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId")] Drink drink)
+        public async Task<IActionResult> Create(DrinkViewModel dVM)
         {
+            if (dVM.UrlsArr.Count != 2)
+            {
+                ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
+                return View(dVM);
+            }
+
+            string urls = dVM.UrlsArr.Join(";");
+
             if (ModelState.IsValid)
             {
-                _context.Add(drink);
+                Drink drink = new Drink
+                {
+                    DrinkId = dVM.DrinkId,
+                    Name = dVM.Name,
+                    ShortDescription = dVM.ShortDescription,
+                    LongDescription = dVM.LongDescription,
+                    Price = dVM.Price,
+                    ImageThumbnailUrl = dVM.ImageThumbnailUrl,
+                    IsPreferredDrink = dVM.IsPreferredDrink,
+                    InStock = dVM.InStock,
+                    CategoryId = dVM.CategoryId,
+                    ImageSlideShowUrls = urls,
+
+                };
                 await _context.SaveChangesAsync();
                 //INSERT INTO Drinks (...) VALUES(...)
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", drink.CategoryId);
-            return View(drink);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", dVM.CategoryId);
+            return View(dVM);
         }
 
         // GET: Admin/Edit/5
@@ -96,7 +119,7 @@ namespace Drinks_Self_Learn.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId")] Drink drink)
+        public async Task<IActionResult> Edit(int id, [Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId,LongDescription,ImageSlideShowUrls")] Drink drink)
         {
             if (id != drink.DrinkId)
             {

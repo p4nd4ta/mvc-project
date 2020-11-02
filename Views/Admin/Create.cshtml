@@ -1,4 +1,4 @@
-﻿@model Drinks_Self_Learn.Data.Models.Drink
+﻿@model Drinks_Self_Learn.ViewModels.DrinkViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -12,6 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UrlCounter" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -32,6 +33,11 @@
                 <input asp-for="ImageThumbnailUrl" class="form-control" />
                 <span asp-validation-for="ImageThumbnailUrl" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="LongDescription" class="control-label"></label>
+                <textarea asp-for="LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="LongDescription" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsPreferredDrink" /> @Html.DisplayNameFor(model => model.IsPreferredDrink)
@@ -44,7 +50,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <div id="TextBoxContainer">
+                    <label class="control-label">Slide 1</label>
+                    <input asp-for="UrlsArr[0]" class="form-control" />
+                    <button id="AddInput">Add</button>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />
@@ -59,4 +72,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="~/lib/js/SlidesValidation.js"></script>
 }
