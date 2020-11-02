@@ -9,7 +9,7 @@ namespace Drinks_Self_Learn.ViewModels
 {
     public class DrinkViewModel
     {
-        [Required]
+        //[Required]
         public int DrinkId { get; set; }
         [Required]
         public string Name { get; set; }
@@ -30,7 +30,6 @@ namespace Drinks_Self_Learn.ViewModels
         [Required]
         public int CategoryId { get; set; }
         public int UrlCounter { get;set; }
-        [Required]
         public virtual Category Category { get; set; }
 
     }

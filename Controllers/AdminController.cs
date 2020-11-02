@@ -65,7 +65,7 @@ namespace Drinks_Self_Learn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DrinkViewModel dVM)
         {
-            if (dVM.UrlsArr.Count != 2)
+            if (dVM.UrlsArr.Count != dVM.UrlCounter)
             {
                 ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
                 return View(dVM);
@@ -77,7 +77,6 @@ namespace Drinks_Self_Learn.Controllers
             {
                 Drink drink = new Drink
                 {
-                    DrinkId = dVM.DrinkId,
                     Name = dVM.Name,
                     ShortDescription = dVM.ShortDescription,
                     LongDescription = dVM.LongDescription,
@@ -89,6 +88,8 @@ namespace Drinks_Self_Learn.Controllers
                     ImageSlideShowUrls = urls,
 
                 };
+
+                _context.Add(drink);
                 await _context.SaveChangesAsync();
                 //INSERT INTO Drinks (...) VALUES(...)
                 return RedirectToAction(nameof(Index));

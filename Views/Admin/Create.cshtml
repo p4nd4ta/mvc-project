@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" id="CreateProductForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UrlCounter" />
             <div class="form-group">
@@ -54,13 +54,14 @@
             </div>
             <div class="form-group">
                 <div id="TextBoxContainer">
+                    <span class="text-danger field-validation-error">@ViewBag.ErrorMessageUrls</span>
                     <label class="control-label">Slide 1</label>
                     <input asp-for="UrlsArr[0]" class="form-control" />
-                    <button id="AddInput">Add</button>
+                    <button id="AddInput" class="btn btn-success">Add</button>
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <button id="sub" class="btn btn-success">Create Product</button>
             </div>
         </form>
     </div>
@@ -72,6 +73,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>*@
     <script src="~/lib/js/SlidesValidation.js"></script>
 }
