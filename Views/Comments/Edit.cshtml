@@ -17,7 +17,8 @@
             <input asp-for="CommentDate" type="hidden" class="form-control" />
             <div class="form-group">
                 <label asp-for="CommentText" class="control-label"></label>
-                <textarea asp-for="CommentText" class="form-control"></textarea>
+                <textarea asp-for="CommentText" class="form-control" id="NewCommentText"></textarea>
+                <span class="float-right"><i id="char-count">@Model.CommentText.Length</i><strong>/200</strong></span>
                 <span asp-validation-for="CommentText" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,4 +34,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/js/CommentScript.js"></script>
+    <script src="~/lib/js/CommentCounter.js"></script>
 }

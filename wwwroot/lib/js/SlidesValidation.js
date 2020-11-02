@@ -1,14 +1,20 @@
 ﻿$(document).ready(function () {
     var textbox = $("#TextBoxContainer");
     var AddButton = $("#AddInput");
-    var index = 1;
+    var buttonDelete = $(".delete-btn");
+    if (document.getElementById("UrlCounter").value != 0){
+        var index = document.getElementById("UrlCounter").value;
+    } else {
+        var index = 1;
+    }
+
     var submitButton = $("#sub");
 
     AddButton.click(function (e) {
         e.preventDefault();
         var label = document.createElement("label");
-        label.classList.add("control-label");
-        var labeltext = document.createTextNode(`Slide ${index+1}`);
+        label.classList.add("control-label","input-group");
+        var labeltext = document.createTextNode(`Slide ${parseInt(index)+1}`);
         label.appendChild(labeltext);
         var input = document.createElement("input");
         input.classList.add("form-control");
@@ -16,22 +22,25 @@
         input.setAttribute("name", `UrlsArr[${index}]`);
         label.appendChild(input);
         index++;
-        var buttonDelete = document.createElement("button");
-        buttonDelete.classList.add("delete-btn","btn","btn-danger");
-        buttonDelete.addEventListener("click", function (e) {
-            e.preventDefault();
-            var labelContainer = e.target.parentElement;
-            console.log(labelContainer);
-            labelContainer.remove();
-        });
-        var deletetext = document.createTextNode("Remove");
-        buttonDelete.appendChild(deletetext);
-        label.appendChild(buttonDelete);
         textbox.append(label);
     });
 
+        buttonDelete.on("click", function () {
+            if (index > 1) {
+                index--;
+                $(`#UrlsArr_${index}_`).parent().remove();
+            }
+        });
+
     submitButton.click(function (e) {
-        document.getElementById("UrlCounter").value = index; 
-        $("#CreateProductForm").submit();
+        document.getElementById("UrlCounter").value = index;
+        if (($(".validation-checker").val.length == 0) || !( $(".validation-checker").val().replace(/\s/g, '').length ) ){
+            $(".validation-checker").addClass("is-invalid");
+            return false;
+        }
+        else {
+            return true;
+            $("#CreateProductForm").submit();
+        }
     });
 });

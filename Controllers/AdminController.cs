@@ -48,7 +48,25 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
 
-            return View(drink);
+            string urls = drink.ImageSlideShowUrls;
+            List<string> imgUrls = urls.Split(';').ToList();
+
+            DrinkViewModel dVM = new DrinkViewModel
+            {
+                DrinkId = drink.DrinkId,
+                Name = drink.Name,
+                ShortDescription = drink.ShortDescription,
+                LongDescription = drink.LongDescription,
+                Price = drink.Price,
+                ImageThumbnailUrl = drink.ImageThumbnailUrl,
+                IsPreferredDrink = drink.IsPreferredDrink,
+                InStock = drink.InStock,
+                CategoryId = drink.CategoryId,
+                UrlsArr = imgUrls,
+                Category = drink.Category,
+            };
+
+            return View(dVM);
         }
 
         // GET: Admin/Create
@@ -86,7 +104,7 @@ namespace Drinks_Self_Learn.Controllers
                     InStock = dVM.InStock,
                     CategoryId = dVM.CategoryId,
                     ImageSlideShowUrls = urls,
-
+                    Category=dVM.Category,
                 };
 
                 _context.Add(drink);
@@ -112,7 +130,27 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drink.CategoryId);
-            return View(drink);
+
+
+            string urls = drink.ImageSlideShowUrls;
+            List<string> imgUrls = urls.Split(';').ToList();
+
+            DrinkViewModel dVM = new DrinkViewModel
+            {
+                DrinkId = drink.DrinkId,
+                Name = drink.Name,
+                ShortDescription = drink.ShortDescription,
+                LongDescription = drink.LongDescription,
+                Price = drink.Price,
+                ImageThumbnailUrl = drink.ImageThumbnailUrl,
+                IsPreferredDrink = drink.IsPreferredDrink,
+                InStock = drink.InStock,
+                CategoryId = drink.CategoryId,
+                UrlsArr = imgUrls,
+                Category = drink.Category,
+            };
+
+            return View(dVM);
         }
 
         // POST: Admin/Edit/5
@@ -120,15 +158,40 @@ namespace Drinks_Self_Learn.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DrinkId,Name,ShortDescription,Price,ImageThumbnailUrl,IsPreferredDrink,InStock,CategoryId,LongDescription,ImageSlideShowUrls")] Drink drink)
+        public async Task<IActionResult> Edit(int id,DrinkViewModel dVM)
         {
-            if (id != drink.DrinkId)
+            if (id != dVM.DrinkId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                
+                if (dVM.UrlsArr.Count != dVM.UrlCounter)
+                {
+                    ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
+                    return View(dVM);
+                }
+
+                string urls = dVM.UrlsArr.Join(";");
+
+                Drink drink = new Drink
+                {
+                    DrinkId = dVM.DrinkId,
+                    Name = dVM.Name,
+                    ShortDescription = dVM.ShortDescription,
+                    LongDescription = dVM.LongDescription,
+                    Price = dVM.Price,
+                    ImageThumbnailUrl = dVM.ImageThumbnailUrl,
+                    IsPreferredDrink = dVM.IsPreferredDrink,
+                    InStock = dVM.InStock,
+                    CategoryId = dVM.CategoryId,
+                    Category = dVM.Category,
+                    ImageSlideShowUrls = urls,
+                };
+
+
                 try
                 {
                     _context.Update(drink);
@@ -148,8 +211,8 @@ namespace Drinks_Self_Learn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", drink.CategoryId);
-            return View(drink);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", dVM.CategoryId);
+            return View(dVM);
         }
 
         // GET: Admin/Delete/5

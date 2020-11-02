@@ -9,5 +9,5 @@
         var validation = document.getElementById("comment-validation");
         validation.innerText = "Comment cannot exceed 200 symbols !";
         return false;
-    } else { document.getElementById("form-for-newComment").submit();}
+    } else { document.getElementById("form-for-newComment").submit(); }
 }

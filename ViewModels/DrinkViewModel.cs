@@ -9,7 +9,6 @@ namespace Drinks_Self_Learn.ViewModels
 {
     public class DrinkViewModel
     {
-        //[Required]
         public int DrinkId { get; set; }
         [Required]
         public string Name { get; set; }

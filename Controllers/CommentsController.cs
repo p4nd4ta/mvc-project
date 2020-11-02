@@ -54,7 +54,8 @@ namespace Drinks_Self_Learn.Controllers
                 await _commentsRepository.WriteComment(Nc);
                 return RedirectToAction("Details", "Drink", new { id = dtVM.Drink.DrinkId });
             }
-            return RedirectToAction("List", "Drink");
+            //return RedirectToAction("List", "Drink");
+            return RedirectToAction("Details", "Drink", new { id = dtVM.Drink.DrinkId });
         }
 
         // Administration bellow
