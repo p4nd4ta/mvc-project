@@ -40,7 +40,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-                <tr class="bg-primary text-white">
+                <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
@@ -50,8 +50,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Drink.Name)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommentText)
+                    <td class="w-50">
+                        <textarea class="form-control" readonly name="CommentText" id="CommentText" rows="4">@item.CommentText</textarea>
                     </td>
                     <td class="text-danger"><i class="fas fa-dot-circle"></i> Unapproved</td>
                     <td class="btn-group-sm">
