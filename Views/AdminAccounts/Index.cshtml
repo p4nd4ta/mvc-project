@@ -7,19 +7,20 @@
 }
 
 <h1>Admin Panel - Users</h1>
-
-<p class="btn-group">
-    <a asp-controller="Admin" asp-action="Index" class="btn btn-primary"><i class="fas fa-home"></i> MAIN VIEW</a>
-    <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
-    <a asp-controller="AdminAccounts" asp-action="ListRoles" class="btn btn-warning"><i class="fas fa-id-badge"></i> Manage Roles</a>
-    <a asp-action="Register" asp-controller="Account" class="btn btn-success"><i class="fas fa-plus-square"></i> Create New User</a>
-    <a type="button" class="btn btn-secondary" asp-controller="Comments" asp-action="Index"><i class="fas fa-comments"></i> View All Comments</a>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" asp-controller="Comments" asp-action="ListApproved">Approved Comments</a>
-        <a class="dropdown-item" asp-controller="Comments" asp-action="ListUnapproved">UnApproved Commnets</a>
+<p>
+    <div class="btn-group">
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-primary"><i class="fas fa-home"></i> MAIN VIEW</a>
+        <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
+        <a asp-controller="AdminAccounts" asp-action="ListRoles" class="btn btn-warning"><i class="fas fa-id-badge"></i> Manage Roles</a>
+        <a asp-action="Register" asp-controller="Account" class="btn btn-success"><i class="fas fa-plus-square"></i> Create New User</a>
+        <a type="button" class="btn btn-secondary" asp-controller="Comments" asp-action="Index"><i class="fas fa-comments"></i> View All Comments</a>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-controller="Comments" asp-action="ListApproved">Approved Comments</a>
+            <a class="dropdown-item" asp-controller="Comments" asp-action="ListUnapproved">UnApproved Commnets</a>
+        </div>
     </div>
 </p>
 <table class="table">

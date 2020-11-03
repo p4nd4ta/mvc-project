@@ -6,7 +6,8 @@
 
 <h1>Admin Panel - Products</h1>
 
-<p class="btn-group">
+<p>
+    <div class="btn-group">
         <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i> Add New Product</a>
         <a asp-controller="AdminOrders" asp-action="Index" class="btn btn-dark"><i class="fas fa-boxes"></i> View Orders</a>
         <a asp-controller="AdminAccounts" asp-action="Index" class="btn btn-warning"><i class="fas fa-users"></i> Manage Users</a>
@@ -19,6 +20,7 @@
             <a class="dropdown-item" asp-controller="Comments" asp-action="ListApproved">Approved Comments</a>
             <a class="dropdown-item" asp-controller="Comments" asp-action="ListUnapproved">UnApproved Commnets</a>
         </div>
+    </div>
 </p>
 <table class="table">
     <thead>
