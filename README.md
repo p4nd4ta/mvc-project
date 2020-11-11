@@ -16,17 +16,17 @@ This is an ecommerce web application, for selling beverages. There are the follo
 * Easy-to-navigate, category-based(_`Alcoholic` and `Non-Alcoholic` drinks filter_) products list, with indicators if the product is in stock.
 * Products base full text search engine
 * Dynamically generated pages for each product, with comments section for clients
-* Comments Moderation/Menagement system
+* Comments Moderation/Management system
 * Users Management system
 - **Admin Panel Features:**
   - Manage the products list (`Drinks table`) from the App with options for `Create`, `Delete`, `Edit`, `Details View`. The produce range can be changed on the fly through the user friendly interface.
   - Provides an overview of all orders(`Orders table`), with option for more details (`Details`), including the data the user has specified in the `Checkout View`(_Shipping and Contact information_), and the requested beverages (_displaying them, taking advantage of the following `many-to-many` DB relation:_ `Orders <-> OrderDetails <-> Drinks`). Therefore, the products can be handed over to the delivery team ASAP.  
-The _new, unprocessed_ orders are at the top of the list and color highlighted ( ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) ), so you can determine with a glance of an eye, do you have any  work to do.
+The _new, unprocessed_ orders are at the top of the list and color highlighted ( ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) ), so you can determine with a glance of an eye, do you have any work to do.You can also view `All Orders` made by a specific user.
 Once you pack the order, you can simply click on `Mark as Processed` under `Details`, and the status will be changed immediately. You can _undo_ this, by clicking on the newly appeared `Mark as Unprocessed` button, under the same section. There is a `Delete` functionality, too.
-  - Comments moderation system: `Approve`/`Dissaprove` Comments, only `Approved` comments are shown to the end user, every new comment is `dissaproved` by default, and awaits review. `List`,`Edit`,`Delete` Functionality for each comment.
-`Interactive Mode` - when a product page is viewed by and Administrator, the changes can be done from the page it self, quick and easy.
-  - Users And Roles Management System: `Delete`/`Edit`/`Ban`/`Reset` User
-  - `Create`/`Edit`/`Delete` Roles and `promote`/`demote` User accounts from each role
+  - Comments moderation system: `Approve`/`Disapprove` Comments, only `Approved` comments are shown to the end user, every new comment is `disapproved` by default, and awaits review. `List`,`Edit`,`Delete` Functionality for each comment. Filtering comments by `Approval state`, for easy management.
+`Interactive Mode` - when a product page is viewed by an Administrator user, the changes can be done from the product page it self, quick and easy.
+  - Users And Roles Management System: `Delete`/`Edit`/`Ban`/`Reset` User Account
+  - `Create`/`Edit`/`Delete` Roles and `promote`/`demote` User accounts for each role
 
 ## Deployment
 
@@ -43,7 +43,7 @@ There is `DbInitializer.cs` inside `/Data/Models/` to populate the database with
 ```c#
 DbInitializer.Seed(serviceProvider);
 ```
-If the above method is never called tough, the `Drinks` and `Categories` tables will be empty.
+If the above method is never called though, the `Drinks` and `Categories` tables will be empty.
 #### Environment Variables
 Inside `Startup.cs` is a check for the `ASPNETCORE_ENVIRONMENT` variable. The default value is `Development`.
 If it is set to `Production`, the
@@ -55,7 +55,7 @@ If it is set to `Production`, the
 
 
 ## Database
-![DB-tables](https://i.imgur.com/zNCv50W.png)
+![DB-tables](https://i.imgur.com/XQf5Tpr.png)
 
 ## License
 [MIT](https://github.com/p4nd4ta/mvc-project/blob/main/LICENSE)

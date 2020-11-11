@@ -55,7 +55,7 @@ namespace Drinks_Self_Learn.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<int?>("DrinkId")
+                    b.Property<int>("DrinkId")
                         .HasColumnType("int");
 
                     b.Property<string>("IdentityUserId")
@@ -231,39 +231,6 @@ namespace Drinks_Self_Learn.Migrations
                     b.HasIndex("DrinkId");
 
                     b.ToTable("ShoppingCartItems");
-                });
-
-            modelBuilder.Entity("Drinks_Self_Learn.ViewModels.CommentViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CommentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CommentText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<int?>("DrinkId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DrinkId");
-
-                    b.HasIndex("IdentityUserId");
-
-                    b.ToTable("CommentViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -466,7 +433,9 @@ namespace Drinks_Self_Learn.Migrations
                 {
                     b.HasOne("Drinks_Self_Learn.Data.Models.Drink", "Drink")
                         .WithMany()
-                        .HasForeignKey("DrinkId");
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
@@ -509,17 +478,6 @@ namespace Drinks_Self_Learn.Migrations
                     b.HasOne("Drinks_Self_Learn.Data.Models.Drink", "Drink")
                         .WithMany()
                         .HasForeignKey("DrinkId");
-                });
-
-            modelBuilder.Entity("Drinks_Self_Learn.ViewModels.CommentViewModel", b =>
-                {
-                    b.HasOne("Drinks_Self_Learn.Data.Models.Drink", "Drink")
-                        .WithMany()
-                        .HasForeignKey("DrinkId");
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

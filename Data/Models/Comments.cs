@@ -17,7 +17,8 @@ namespace Drinks_Self_Learn.Data.Models
         public DateTime CommentDate { get; set; }
         public string UserName { get; set; }
         public bool Approved { get; set; }
-
+        public int DrinkId { get; set; }
+        public string IdentityUserId { get; set; }
         public virtual IdentityUser IdentityUser { get; set; }
         public virtual Drink Drink { get; set; }
     }
