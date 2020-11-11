@@ -9,6 +9,7 @@
     }
 
     var submitButton = $("#sub");
+    var PreviewButton = $("#preview");
 
     AddButton.click(function (e) {
         e.preventDefault();
@@ -41,6 +42,24 @@
         else {
             return true;
             $("#CreateProductForm").submit();
+        }
+    });
+
+    PreviewButton.click(function (e) {
+        document.getElementById("UrlCounter").value = index;
+        if (($(".validation-checker").val.length == 0) || !($(".validation-checker").val().replace(/\s/g, '').length)) {
+            $(".validation-checker").addClass("is-invalid");
+            return false;
+        }
+        else {
+            var prevAction = $("#CreateProductForm").attr('action');
+            console.log(prevAction);
+            $("#CreateProductForm").attr('action', '/Admin/Preview');
+            $("#CreateProductForm").attr('target', '_blank');
+            $("#CreateProductForm").submit();
+            $("#CreateProductForm").attr('action', `${prevAction}`);
+            $("#CreateProductForm").removeAttr('target');
+            return true;
         }
     });
 });

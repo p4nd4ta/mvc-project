@@ -215,6 +215,49 @@ namespace Drinks_Self_Learn.Controllers
             return View(dVM);
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Preview(DrinkViewModel dVM)
+        {
+            if (dVM.UrlsArr.Count != dVM.UrlCounter)
+            {
+                ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
+                return View(dVM);
+            }
+
+            string urls = dVM.UrlsArr.Join(";");
+
+            if (ModelState.IsValid)
+            {
+                Drink drink = new Drink
+                {
+                    Name = dVM.Name,
+                    ShortDescription = dVM.ShortDescription,
+                    LongDescription = dVM.LongDescription,
+                    Price = dVM.Price,
+                    ImageThumbnailUrl = dVM.ImageThumbnailUrl,
+                    IsPreferredDrink = dVM.IsPreferredDrink,
+                    InStock = dVM.InStock,
+                    CategoryId = dVM.CategoryId,
+                    ImageSlideShowUrls = urls,
+                    Category = dVM.Category,
+                };
+
+                DrinkDetailsViewModel ddVM = new DrinkDetailsViewModel
+                {
+                    Drink = drink,
+                    ImgUrlsArr = urls.Split(';'),
+                    //Comments = null,
+                };
+
+                return View(ddVM);
+            }
+            return RedirectToAction("Error","Home");
+        }
+
+
+
         // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
