@@ -74,7 +74,7 @@ namespace Drinks_Self_Learn
               *  - Data is mapped from database to Domain Entities
               *  - Once in-memory, entities can be changed and persisted back in the DB
               * 
-              * We have implemented specific Repository-Interface-Class pairs for these aggregates - Drinks, Categories, Orders,
+              * We have implemented specific Repository-Interface-Class pairs for these aggregates - Drinks, Categories, Orders, Comments
               * which we use to work [CRUD operations (In our case mostly 'R') implemented in the Interface] with data through the IServices we have created,
               * instead of the appdbcontext as a whole.
               * 
@@ -123,11 +123,10 @@ namespace Drinks_Self_Learn
             app.UseMvc(routes =>
             {
                 routes.MapRoute("categoryFilter", "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
-                routes.MapRoute("DrinkDetails", "Drink/Details/{id:int}", defaults: new { Controller = "Drink", action = "Details" });
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DbInitializer.Seed(serviceProvider); //Populates the Database with Categories and Drinks, only run if they are completely empty
+            DbInitializer.Seed(serviceProvider); //Populates the Database with Categories and Drinks, only runs if they are completely empty
         }
     }
 }

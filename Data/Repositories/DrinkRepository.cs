@@ -26,7 +26,7 @@ namespace Drinks_Self_Learn.Data.Repositories
 
         // for more thorough look at the Design, please refer to the note I have left inside "Startup.cs", under the services configuration
 
-        public IEnumerable<Drink> SearchDrinks(string searchTerm) => _appDbContext.Drinks.Where(d => d.Name.Contains(searchTerm)|| d.ShortDescription.Contains(searchTerm) || d.Category.CategoryName.Equals(searchTerm));
+        public IEnumerable<Drink> SearchDrinks(string searchTerm) => _appDbContext.Drinks.Where(d => d.Name.Contains(searchTerm)|| d.ShortDescription.Contains(searchTerm) || d.Category.CategoryName.Equals(searchTerm) || d.LongDescription.Contains(searchTerm));
 
     }
 }

@@ -4,7 +4,7 @@
 
 <h4>Posted by User: @Model.UserName</h4>
 <h5>Comment ID: @Model.Id</h5>
-<h5>For Product: @Model.Drink.Name</h5>
+<h5>For Product: <a asp-controller="Drink" asp-action="Details" asp-route-id="@Model.Drink.DrinkId" target="_blank">@Model.Drink.Name</a></h5>
 <h5>Posted at: @Model.CommentDate</h5>
 <hr />
 <div class="row">

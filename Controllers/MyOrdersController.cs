@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Drinks_Self_Learn.Controllers
 {
     [Authorize]
-    public class MyOrdersController : Controller
+    public class MyOrdersController : Controller //The use of this Controller is so the user can see the orders placed by him/her, and the statuses of them as well
     {
         private readonly AppDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
@@ -46,7 +46,7 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
 
-            if (order.IdentityUser.Id != currentUser.Id) // check if the order belongs to the user, preventing seeing other user's oredrs
+            if (order.IdentityUser.Id != currentUser.Id) // check if the order belongs to the user, preventing seeing other user's orders
             {
                 return NotFound();
             }
@@ -54,7 +54,7 @@ namespace Drinks_Self_Learn.Controllers
             var drinksList = new List<Drink>();
             IEnumerable<OrderDetail> detailsList; // create an enumerable structure objects to hold the drinks and the details for the order(Amount, etc...)
 
-            foreach (OrderDetail od in order.OrderLines) // a very different approach here...
+            foreach (OrderDetail od in order.OrderLines) // a very different approach here... I am not creating a seperate ViewModel, so i am using the ViewData to pass data to View, I know it is not a good practice, just demonstrating
             {
                 drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId)); //iterate one-by-one and add the drinks to the list from above
                 // SELECT TOP(1) D.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter AND D.DrinkId = @PassedParameter

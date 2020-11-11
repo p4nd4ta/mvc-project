@@ -65,7 +65,7 @@ namespace Drinks_Self_Learn.Controllers
             var drinksList = new List<Drink>();
             IEnumerable<OrderDetail> detailsList; // create an enumerable structure objects to hold the drinks and the details for the order(Amount, etc...)
 
-            foreach (OrderDetail od in order.OrderLines) // a very different approach here...
+            foreach (OrderDetail od in order.OrderLines) // a very different approach here... I am not creating a seperate ViewModel, so i am using the ViewData to pass data to View, I know it is not a good practice, just demonstrating
             {
                 drinksList.Add(await _context.Drinks.FirstOrDefaultAsync(m => m.DrinkId == od.DrinkId)); //iterate one-by-one and add the drinks to the list from above
                 // SELECT TOP(1) D.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter AND D.DrinkId = @PassedParameter

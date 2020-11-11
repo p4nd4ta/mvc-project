@@ -15,7 +15,7 @@ namespace Drinks_Self_Learn.Controllers
     {
         private readonly ICategoryRepository _categoryRepository; //we get the data for the categories through the interface for the repository
         private readonly IDrinkRepository _drinkRepository;
-        private readonly ICommentsRepository _commentsRepository;
+        private readonly ICommentsRepository _commentsRepository; //we get the data for the comments through the interface for the repository
         private readonly UserManager<IdentityUser> _userManager;
 
         public DrinkController(ICategoryRepository categoryRepository, IDrinkRepository drinkRepository, ICommentsRepository commentsRepository, UserManager<IdentityUser> userManager)
@@ -62,14 +62,14 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search(string searchTerm) //Query the drinks table, display result to user basically
+        public IActionResult Search(string searchTerm) //Query the drinks table, display result to user, basically
         {
             if (searchTerm == null)
             {
                 return RedirectToAction("List");
             }
 
-            ViewBag.sTerm = searchTerm;
+            ViewBag.sTerm = searchTerm; // pass the searchTerm to be displayed in the View, for better looks
             var drinksListViewModel = new DrinkListViewModel
             { 
                 Drinks = _drinkRepository.SearchDrinks(searchTerm) //Implemented in the DrinkRepository
@@ -77,10 +77,10 @@ namespace Drinks_Self_Learn.Controllers
             return View(drinksListViewModel);
         }
 
-        [HttpGet("/Drink/Details/{id:int}")]
+        [HttpGet("/Drink/Details/{id:int}")] // Set the Route (just a quick fix here to make it use /Details/id ,instead of /Details?id= ...)
         public async Task<IActionResult> Details(int id) // Check the IDrinkRepository Class for more information on the slides URL mechanism inner workings
         {
-            IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id); //get Comments for the Drink
+            IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id); //get Comments for the Drink, put then into a list, and pass it to the VM
             var drink = _drinkRepository.GetDrinkById(id);
             if (drink == null)
             {

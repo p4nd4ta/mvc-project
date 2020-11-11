@@ -228,7 +228,8 @@ namespace Drinks_Self_Learn.Controllers
                 ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
                 return View(dVM);
             }
-
+            //To undestand more on the front-end POST submit logic, please take a look at SlidesValidation.js, more specifically at the PreviewButton.click function
+            //Check the IDrinkRepository Class for more information on the slides URL mechanism inner workings
             string urls = dVM.UrlsArr.Join(";"); //Serialize the URL Data
 
             if (ModelState.IsValid)
@@ -252,7 +253,7 @@ namespace Drinks_Self_Learn.Controllers
                     Drink = drink,
                     ImgUrlsArr = urls.Split(';'), //Deserialize
                 };
-
+                
                 return View(ddVM);
             }
             return RedirectToAction("Error","Home");

@@ -378,7 +378,7 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id) //From the Roles View, get all users in the DB and set them explicitly, if they participate or not in that role
+        public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id) //From the Roles View, get all users in the DB and set them explicitly, if they participate or don't, in that role
         {
             var role = await _roleManager.FindByIdAsync(id); // get the role by roleId
 

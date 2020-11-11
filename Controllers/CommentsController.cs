@@ -19,7 +19,7 @@ namespace Drinks_Self_Learn.Controllers
     {
         private readonly IDrinkRepository _drinkRepository;
         private readonly ICommentsRepository _commentsRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;//Dependency Injections
         public CommentsController(UserManager<IdentityUser> userManager, ICommentsRepository commentsRepository, IDrinkRepository drinkRepository)
         {
             _userManager = userManager;
@@ -65,7 +65,7 @@ namespace Drinks_Self_Learn.Controllers
         public IActionResult Index()
         {
            IEnumerable<Comments>CommentsList=_commentsRepository.GetAllComments;
-            return View(CommentsList);
+            return View(CommentsList); //From here to the end it is the Admin Panel Functionality Only! Here, I am just retrieving all comments via the Repository
         }
 
         [HttpGet]
@@ -73,7 +73,7 @@ namespace Drinks_Self_Learn.Controllers
         public IActionResult ListApproved()
         {
             IEnumerable<Comments> CommentsList = _commentsRepository.GetApprovedComments;
-            return View(CommentsList);
+            return View(CommentsList); //Retrieving all Approved comments via the Repository
         }
 
         [HttpGet]
@@ -81,12 +81,12 @@ namespace Drinks_Self_Learn.Controllers
         public IActionResult ListUnapproved()
         {
             IEnumerable<Comments> CommentsList = _commentsRepository.GetUnapprovedComments;
-            return View(CommentsList);
+            return View(CommentsList); //Retrieving all UnApproved comments via the Repository
         }
 
         [HttpGet]
         [Authorize(Roles = "Administrator")]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id) //Retrieve the Comment by id and pass it to CommentVM for edditing by Admin
         {
 
             var comment = _commentsRepository.GetCommentById(id);
@@ -113,7 +113,7 @@ namespace Drinks_Self_Learn.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public IActionResult Edit(CommentViewModel edVM)
+        public IActionResult Edit(CommentViewModel edVM) //Get the data from the CommentVM, validate it, and persist to DB, using EditComment method from the Repository
         {
             if (ModelState.IsValid)
             {
@@ -134,8 +134,8 @@ namespace Drinks_Self_Learn.Controllers
             return View(edVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost] //Interactive Edit, Used When a Drink Details page is viewed by Admin User
+        [ValidateAntiForgeryToken] //DIFF: Redirects the user to the same page it has been previously
         [Authorize(Roles = "Administrator")]
         public IActionResult EditInt(CommentViewModel edVM)
         {
@@ -163,7 +163,7 @@ namespace Drinks_Self_Learn.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Administrator")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) // Delete Comment by ID
         {
 
             var comment = _commentsRepository.GetCommentById(id);
@@ -188,7 +188,7 @@ namespace Drinks_Self_Learn.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id) //Delete the Comment, using the method from the Repository
         {
             
 
@@ -206,7 +206,7 @@ namespace Drinks_Self_Learn.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Administrator")]
-        public IActionResult ChangeStatus(int id)
+        public IActionResult ChangeStatus(int id) //Change comment status, using the method from the Repository
         {
 
 
@@ -229,8 +229,8 @@ namespace Drinks_Self_Learn.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        [HttpGet] //Interactive Status Change, Used When a Drink Details page is viewed by Admin User
+        [Authorize(Roles = "Administrator")] //DIFF: Redirects the user to the same page it has been previously
         public IActionResult ChangeStatusInt(int id)
         {
 
@@ -255,8 +255,8 @@ namespace Drinks_Self_Learn.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost] //Interactive Delete, Used When a Drink Details page is viewed by Admin User
+        [ValidateAntiForgeryToken] //DIFF: Redirects the user to the same page it has been previously
         [Authorize(Roles = "Administrator")]
         public IActionResult DeleteInt(int id)
         {
@@ -276,7 +276,7 @@ namespace Drinks_Self_Learn.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Administrator")]
-        public IActionResult Details(int id)
+        public IActionResult Details(int id) //Details View for a specific comment(by id)
         {
             var comment = _commentsRepository.GetCommentById(id);
             if (comment == null)

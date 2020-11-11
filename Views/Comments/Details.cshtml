@@ -5,35 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Details for Comment</h1>
+
+<h4>Posted by User: @Model.UserName</h4>
+<h5>Comment ID: @Model.Id</h5>
+<h5>For Product: <a asp-controller="Drink" asp-action="Details" asp-route-id="@Model.Drink.DrinkId" target="_blank">@Model.Drink.Name</a></h5>
+<h5>Posted at: @Model.CommentDate</h5>
+<hr />
 
 <div>
-    <h4>CommentViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Drink.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Drink.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CommentDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CommentDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-    </dl>
-
     <textarea class="form-control" readonly asp-for="CommentText"></textarea>
-
 </div>
+
 <div class="mt-2">
     <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Back to List</a>
     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
