@@ -62,7 +62,7 @@ namespace Drinks_Self_Learn.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search(string searchTerm)
+        public IActionResult Search(string searchTerm) //Query the drinks table, display result to user basically
         {
             if (searchTerm == null)
             {
@@ -72,15 +72,15 @@ namespace Drinks_Self_Learn.Controllers
             ViewBag.sTerm = searchTerm;
             var drinksListViewModel = new DrinkListViewModel
             { 
-                Drinks = _drinkRepository.SearchDrinks(searchTerm)
+                Drinks = _drinkRepository.SearchDrinks(searchTerm) //Implemented in the DrinkRepository
             };
             return View(drinksListViewModel);
         }
 
         [HttpGet("/Drink/Details/{id:int}")]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id) // Check the IDrinkRepository Class for more information on the slides URL mechanism inner workings
         {
-            IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id);
+            IEnumerable<Comments> commentsList = await _commentsRepository.GetCommentsForDrink(id); //get Comments for the Drink
             var drink = _drinkRepository.GetDrinkById(id);
             if (drink == null)
             {
@@ -89,7 +89,7 @@ namespace Drinks_Self_Learn.Controllers
 
             string[] imgUrls;
             string urls = drink.ImageSlideShowUrls;
-            imgUrls = urls.Split(';');
+            imgUrls = urls.Split(';'); //"Deserialize" the string from DB
 
             DrinkDetailsViewModel DdVM = new DrinkDetailsViewModel
             {
@@ -98,7 +98,7 @@ namespace Drinks_Self_Learn.Controllers
                 ImgUrlsArr = imgUrls
             };
 
-            return View(DdVM);
+            return View(DdVM); //pass data to View
         }
 
     }

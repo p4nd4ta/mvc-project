@@ -46,9 +46,9 @@ namespace Drinks_Self_Learn.Controllers
                     CommentDate = DateTime.Now,
                     CommentText = dtVM.NewCommentText,
                     Drink = dr,
-                    UserName=user.UserName,
+                    UserName = user.UserName,
                     IdentityUser = user,
-                    Approved=true,
+                    Approved = true, // !Important! change that to 'false' to make the approval system function properly, left to 'true' for testing purposes only
                 };
 
                 await _commentsRepository.WriteComment(Nc);
@@ -58,7 +58,7 @@ namespace Drinks_Self_Learn.Controllers
             return RedirectToAction("Details", "Drink", new { id = dtVM.Drink.DrinkId });
         }
 
-        // Administration bellow
+        // === Administration bellow ===
 
         [HttpGet]
         [Authorize(Roles = "Administrator")]

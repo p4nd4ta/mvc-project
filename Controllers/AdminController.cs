@@ -14,7 +14,10 @@ using Microsoft.EntityFrameworkCore.Internal;
 namespace Drinks_Self_Learn.Controllers
 {
     [Authorize (Roles = "Administrator")] // make sure only authorized users with the Administrator role can have access
-    public class AdminController : Controller // this is nothing more than a Standard Scaffolded Controller with Views (Only the Views for it have been customized.)
+    //This is nothing more than a Standard Scaffolded Controller with Views (Only the Views for it have been customized.) (also see SlidesValidation.js)
+    //Also a Preview Action is added, showing the ViewModel in NewTab/Window before Saving to DB, for visual "Confirmation" from the user(also see SlidesValidation.js)
+    //Check the IDrinkRepository Class for more information on the slides URL mechanism inner workings
+    public class AdminController : Controller
     {
         private readonly AppDbContext _context;
         // here we don't demostrate the Repository Design Pattern, we are directly access the Db Context
@@ -49,7 +52,7 @@ namespace Drinks_Self_Learn.Controllers
             }
 
             string urls = drink.ImageSlideShowUrls;
-            List<string> imgUrls = urls.Split(';').ToList();
+            List<string> imgUrls = urls.Split(';').ToList(); //Deserialize the Url Data
 
             DrinkViewModel dVM = new DrinkViewModel
             {
@@ -83,13 +86,13 @@ namespace Drinks_Self_Learn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DrinkViewModel dVM)
         {
-            if (dVM.UrlsArr.Count != dVM.UrlCounter)
+            if (dVM.UrlsArr.Count != dVM.UrlCounter || dVM.UrlsArr.Count == 0) // Check if the array is held properly by the JS, and if it has any Urls
             {
                 ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
                 return View(dVM);
             }
 
-            string urls = dVM.UrlsArr.Join(";");
+            string urls = dVM.UrlsArr.Join(";"); //Serialize the Url Data with seperator ';' (URL reserved char)
 
             if (ModelState.IsValid)
             {
@@ -133,7 +136,7 @@ namespace Drinks_Self_Learn.Controllers
 
 
             string urls = drink.ImageSlideShowUrls;
-            List<string> imgUrls = urls.Split(';').ToList();
+            List<string> imgUrls = urls.Split(';').ToList(); // Deserialize the Urls
 
             DrinkViewModel dVM = new DrinkViewModel
             {
@@ -168,13 +171,13 @@ namespace Drinks_Self_Learn.Controllers
             if (ModelState.IsValid)
             {
                 
-                if (dVM.UrlsArr.Count != dVM.UrlCounter)
+                if (dVM.UrlsArr.Count != dVM.UrlCounter || dVM.UrlsArr.Count == 0)
                 {
                     ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
                     return View(dVM);
                 }
 
-                string urls = dVM.UrlsArr.Join(";");
+                string urls = dVM.UrlsArr.Join(";"); // Serialize the Urls Data
 
                 Drink drink = new Drink
                 {
@@ -218,15 +221,15 @@ namespace Drinks_Self_Learn.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Preview(DrinkViewModel dVM)
+        public IActionResult Preview(DrinkViewModel dVM) //Just a preview of the Changes you are about to make, a way of visual confirmation, the data is NOT persisted to DB here
         {
-            if (dVM.UrlsArr.Count != dVM.UrlCounter)
+            if (dVM.UrlsArr.Count != dVM.UrlCounter || dVM.UrlsArr.Count == 0 )
             {
                 ViewBag.ErrorMessageUrls = "Check your slideshow URLs !";
                 return View(dVM);
             }
 
-            string urls = dVM.UrlsArr.Join(";");
+            string urls = dVM.UrlsArr.Join(";"); //Serialize the URL Data
 
             if (ModelState.IsValid)
             {
@@ -247,8 +250,7 @@ namespace Drinks_Self_Learn.Controllers
                 DrinkDetailsViewModel ddVM = new DrinkDetailsViewModel
                 {
                     Drink = drink,
-                    ImgUrlsArr = urls.Split(';'),
-                    //Comments = null,
+                    ImgUrlsArr = urls.Split(';'), //Deserialize
                 };
 
                 return View(ddVM);

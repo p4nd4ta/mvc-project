@@ -55,7 +55,7 @@ namespace Drinks_Self_Learn.Controllers
                     return Redirect(loginViewModel.ReturnUrl);
                 }
 
-                if (result.IsLockedOut)
+                if (result.IsLockedOut) // Check if the account is locked and if yes, redirect to AccountLocked
                 {
                     return View("AccountLocked");
                 }

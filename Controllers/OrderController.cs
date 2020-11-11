@@ -56,9 +56,9 @@ namespace Drinks_Self_Learn.Controllers
             return View(order);
         }
 
+        [Authorize]
         public IActionResult CheckoutComplete() // return a view to the the user with completion message
         {
-            ViewBag.CheckoutCompleteMessage = "Thank you for your purchase !";
             return View();
         }
     }

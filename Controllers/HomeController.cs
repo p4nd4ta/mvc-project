@@ -45,8 +45,8 @@ namespace Drinks_Self_Learn.Controllers
             {
                 return this.View("404"); //if there is 404 error, we return the 404 error view, else call the exception hander from above
             }
+            
             return Error();
-
         }
     }
 }

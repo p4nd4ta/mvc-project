@@ -74,7 +74,7 @@ namespace Drinks_Self_Learn.Controllers
             detailsList = _context.OrderDetails.Where(p => p.OrderId.Equals(order.OrderId)); //same thing as above, but here we get it done with a single query, retrieve the order details for the order with the same id
             // SELECT OD.* FROM Orders O JOIN OrderDetails OD ON OD.OrderId = O.OrderId JOIN Drinks D ON D.DrinkId = OD.DrinkId WHERE O.OrderId = @PassedParameter
 
-            ViewData["Drinks"] = drinksList; // and to pass them to the view we use ViewData
+            ViewData["Drinks"] = drinksList; // and to pass them to the view we use ViewData, I haven't created a ViewModel, showing this Implementation, not saying it is correct though
             ViewData["Details"] = detailsList;
 
             return View(order);
@@ -145,7 +145,7 @@ namespace Drinks_Self_Learn.Controllers
                 return NotFound();
             }
 
-            if (order.OrderProcessed == false ) //implement the "logic", also the OrderProcessed property is used in the Index View for visual feedback
+            if (order.OrderProcessed == false ) //implement the "logic", also the OrderProcessed property is used in the Index View for visual feedback And the MyOrders, so the client can check the status of the order
             {
                 order.OrderProcessed = true;
             }
