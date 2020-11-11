@@ -51,7 +51,7 @@
             <strong class="text-success text-left">In stock</strong>
             <div class="addToCart text-right">
                 <p class="btn">
-                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
+                    <a class="btn btn-success" id="cartButton" href="#">
                         Add to cart &nbsp;<i class="fas fa-cart-plus"></i>
                     </a>
                 </p>
@@ -62,7 +62,7 @@
             <strong class="text-danger text-left">Out of stock</strong>
             <div class="addToCart text-right">
                 <p class="btn">
-                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.Drink.DrinkId">
+                    <a class="btn btn-success" id="cartButton" href="#">
                         Preorder &nbsp;<i class="fas fa-truck-loading"></i>
                     </a>
                 </p>
