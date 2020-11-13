@@ -27,6 +27,9 @@ namespace Drinks_Self_Learn.Controllers
 
         public IActionResult Login(string returnURL)
         {
+            if (HttpContext.User.Identity.IsAuthenticated) //If the User is already authenticated, don't allow him/her to view the login page
+                return RedirectToAction("Index","Home");
+
             return View(new LoginViewModel()
             {
                 ReturnUrl = returnURL
@@ -66,6 +69,10 @@ namespace Drinks_Self_Learn.Controllers
 
         public ActionResult Register()
         {
+
+            if (HttpContext.User.Identity.IsAuthenticated && !HttpContext.User.IsInRole("Administrator"))//If the User is already authenticated, don't allow him/her to view the register page
+                return RedirectToAction("Index", "Home");//Except for administrators
+
             return View();
         }
 
