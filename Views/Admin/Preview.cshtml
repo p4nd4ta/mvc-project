@@ -49,6 +49,7 @@
         @if (Model.Drink.InStock)
         {
             <strong class="text-success text-left">In stock</strong>
+            <h4 class="text-left mt-1">@Model.Drink.Price.ToString("c")</h4>
             <div class="addToCart text-right">
                 <p class="btn">
                     <a class="btn btn-success" id="cartButton" href="#">
@@ -60,6 +61,7 @@
         else
         {
             <strong class="text-danger text-left">Out of stock</strong>
+            <h4 class="text-left mt-1">@Model.Drink.Price.ToString("c")</h4>
             <div class="addToCart text-right">
                 <p class="btn">
                     <a class="btn btn-success" id="cartButton" href="#">

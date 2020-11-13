@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Drinks_Self_Learn.Data.Models
 {
@@ -62,6 +63,8 @@ namespace Drinks_Self_Learn.Data.Models
 
         [BindNever]
         [ScaffoldColumn(false)]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal OrderTotal { get; set; }
 
         [BindNever]

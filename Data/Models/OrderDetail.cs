@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace Drinks_Self_Learn.Data.Models
         public int OrderId { get; set; } //Foreign Key
         public int DrinkId { get; set; } //Foreign Key
         public int Amount { get; set; }
+        
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         public virtual Drink Drink { get; set; } //
