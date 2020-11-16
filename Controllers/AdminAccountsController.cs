@@ -61,18 +61,19 @@ namespace Drinks_Self_Learn.Controllers
             var result = await _userManager.IsLockedOutAsync(user); // check if the user account is locked
             var IsPermanent = await _userManager.GetLockoutEndDateAsync(user); // get the last lockout end date from the DB
 
-            if (result) // Used for Better visuals and logic in the View
-            {
-                ViewBag.LockOutStatusMessage = "Locked";
-            }
-            if(IsPermanent == DateTime.MaxValue)
+            if(IsPermanent == DateTime.MaxValue) // Used for Better visuals and logic in the View
             {
                 ViewBag.LockOutStatusMessage = "Permanently Locked";
             }
             else
-            {
-                ViewBag.LockOutStatusMessage = "UnLocked";
-            }
+                if (result)
+                {
+                    ViewBag.LockOutStatusMessage = "Locked";
+                }
+                else
+                {
+                    ViewBag.LockOutStatusMessage = "UnLocked";
+                }
 
             return View(model);
         }
@@ -169,19 +170,19 @@ namespace Drinks_Self_Learn.Controllers
             var result = await _userManager.IsLockedOutAsync(user);
             var IsPermanent = await _userManager.GetLockoutEndDateAsync(user);
 
-            if (result) // Used for Better visuals and logic in the View
-            {
-                ViewBag.LockOutStatusMessage = "Locked";
-            }
-            if (IsPermanent == DateTime.MaxValue)
+            if (IsPermanent == DateTime.MaxValue) // Used for Better visuals and logic in the View
             {
                 ViewBag.LockOutStatusMessage = "Permanently Locked";
             }
             else
-            {
-                ViewBag.LockOutStatusMessage = "UnLocked";
-            }
-
+                if (result)
+                {
+                    ViewBag.LockOutStatusMessage = "Locked";
+                }
+                else
+                {
+                    ViewBag.LockOutStatusMessage = "UnLocked";
+                }
 
             return View(model);
         }
