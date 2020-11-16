@@ -4,6 +4,10 @@
 <div class="card">
     <div class="card-header">
         <h2>@Model.Drink.Name</h2>
+        @if (this.User.IsInRole("Administrator"))
+        {
+            <a class="btn btn-warning float-right" asp-controller="Admin" asp-action="Edit" asp-route-id="@Model.Drink.DrinkId" target="_blank"><i class="far fa-edit"></i> Edit</a>
+        }
     </div>
     <div>
 
