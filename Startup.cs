@@ -77,14 +77,13 @@ namespace Drinks_Self_Learn
               * BUT definitely it would have been better and more consistent if we had used the same Design Pattern everywhere.
             **/
 
-            services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(sProvider => ShoppingCart.GetCart(sProvider));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Same for all HTTP requests in the session
+            services.AddScoped(sProvider => ShoppingCart.GetCart(sProvider)); // So the cart is the same in the same scoped HTTP request
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
             services.AddMemoryCache();
             services.AddSession();
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
